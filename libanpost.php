@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: LibanPost Shipping Woocommerce
- * Description: This is the first plugin for the API integration between WooCommerce and LibanPost
+ * Description: This is a plugin for the API integration between WooCommerce and LibanPost
  * Version: 1.0
  * Author: Samah Basheer | Ali Basheer
  **/
@@ -81,3 +81,12 @@ class WC_Settings_Tab_API
 }
 
 WC_Settings_Tab_API::init();
+
+function action_woocommerce_admin_order_data_after_order_details( $wccm_before_checkout ) {
+    echo '
+        <div class="prepare-shipment" onclick="OrderDetail()">
+        Prepare LibanPost Shipment
+        </div>
+    ';
+};
+add_action( 'woocommerce_admin_order_data_after_order_details', 'action_woocommerce_admin_order_data_after_order_details', 10, 1 );
