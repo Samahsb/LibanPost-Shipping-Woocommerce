@@ -7,3 +7,37 @@
     border-radius: 3px;
     cursor: pointer;
 }
+.prepare-shipment-btn:hover {
+    background-color: #0071a1;
+}
+.libanpost-overlay {
+    position: absolute;
+    z-index: 400;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: none;
+}
+.dashicons {
+    position: absolute;
+    top: 4%;
+    right: 10%;
+}
+.libanpost-shipment-creation {
+    width: 728px;
+    margin: 0 auto;
+    padding: 15px;
+    margin-top: 10px;
+    border: 1px solid #D6D6D6;
+    overflow: hidden;
+    opacity: 1;
+    background-color: #f2f2f2;
+}
+.libanpost-shipment-creation fieldset {
+    border: 1px solid #D6D6D6;
+    padding: 10px;
+}
+.libanpost-shipment-creation legend {
+    padding-left: 10px;
+}

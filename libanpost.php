@@ -97,8 +97,18 @@ add_action( 'admin_enqueue_scripts', 'enqueuing_admin_scripts' );
 
 function action_woocommerce_admin_order_data_after_order_details( $wccm_before_checkout ) {
     echo '
-        <div class="prepare-shipment-btn">
-        Prepare LibanPost Shipment
+        <div class="prepare-shipment-btn" onclick="ShowShipmentDetails()"> Prepare LibanPost Shipment </div>
+        <div class="libanpost-overlay" id="libanpost_overlay">
+            <div class="libanpost-shipment-creation">
+                <span class="dashicons dashicons-no-alt" onclick="HideShipmentDetails()"></span>
+                <div>
+                    <fieldset>
+                        <legend>Billing Account</legend>
+                            <input type="text">
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
         </div>
     ';
 };
