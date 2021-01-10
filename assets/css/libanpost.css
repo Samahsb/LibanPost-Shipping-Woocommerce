@@ -25,7 +25,7 @@
     right: 1%;
 }
 .libanpost-shipment-creation {
-    width: 728px;
+    max-width: 90%;
     position: relative;
     margin: 0 auto;
     padding: 15px;
@@ -41,9 +41,4 @@
 }
 .libanpost-shipment-creation legend {
     padding-left: 10px;
-}
-@media only screen and (max-width: 600px) {
-    .libanpost-shipment-creation {
-        width: 287px;
-    }
 }
