@@ -1,9 +1,8 @@
-/*style="margin-top: 15px; display: inline-block; background-color: #007cba; color: white; padding: 7px 13px; border-radius: 3px; cursor: pointer;"*/
-.prepare-shipment {
+.prepare-shipment-btn {
     margin-top: 15px;
     display: inline-block;
     background-color: #007cba;
-    color: white;
+    color: #ffffff;
     padding: 7px 13px;
     border-radius: 3px;
     cursor: pointer;

@@ -82,9 +82,22 @@ class WC_Settings_Tab_API
 
 WC_Settings_Tab_API::init();
 
+//enqueue js and css files
+
+function enqueuing_admin_scripts(){
+
+    wp_enqueue_style('admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ).'/assets/css/libanpost.css');
+    wp_enqueue_script('admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ).'/assets/js/libanpost.js');
+
+}
+
+add_action( 'admin_enqueue_scripts', 'enqueuing_admin_scripts' );
+
+//adding prepare LibanPost shipment button
+
 function action_woocommerce_admin_order_data_after_order_details( $wccm_before_checkout ) {
     echo '
-        <div class="prepare-shipment" onclick="OrderDetail()">
+        <div class="prepare-shipment-btn">
         Prepare LibanPost Shipment
         </div>
     ';
