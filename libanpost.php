@@ -6,6 +6,10 @@
  * Author: Samah Basheer | Ali Basheer
  **/
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Adds plugin page configure link
  */
