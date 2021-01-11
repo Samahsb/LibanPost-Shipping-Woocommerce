@@ -14,6 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 include_once dirname( __FILE__ ) . '/includes/setting-class.php';
+include_once dirname( __FILE__ ) . '/includes/prepare-shipment.php';
 
 /**
  * Adds plugin page configure link
@@ -38,23 +39,3 @@ function libanpost_enqueuing_admin_scripts() {
     wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
-
-
-/**
- * adding prepare LibanPost shipment button
- */
-function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_before_checkout ) {
-	?>
-	<div class="prepare-shipment-btn" onclick="ShowShipmentDetails()"> Prepare LibanPost Shipment </div>
-	<div class="libanpost-overlay" id="libanpost_overlay">
-		<div class="libanpost-shipment-creation">
-			<span class="dashicons dashicons-no-alt" onclick="HideShipmentDetails()"></span>
-			<fieldset>
-				<legend>Billing Account</legend>
-				<input type="text">
-			</fieldset>
-		</div>
-	</div>
-	<?php
-}
-add_action( 'woocommerce_admin_order_data_after_order_details', 'libanpost_woocommerce_admin_order_data_after_order_details', 10, 1 );
