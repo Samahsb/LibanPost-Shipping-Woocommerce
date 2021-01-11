@@ -19,7 +19,7 @@
     left: 0;
     display: none;
 }
-.dashicons {
+.libanpost-shipment-creation .dashicons {
     position: absolute;
     top: 4%;
     right: 1%;
@@ -38,7 +38,4 @@
 .libanpost-shipment-creation fieldset {
     border: 1px solid #D6D6D6;
     padding: 10px;
-}
-.libanpost-shipment-creation legend {
-    padding-left: 10px;
 }

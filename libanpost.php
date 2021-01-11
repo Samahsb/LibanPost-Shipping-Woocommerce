@@ -85,10 +85,11 @@ WC_Settings_Tab_API::init();
 //enqueue js and css files
 
 function enqueuing_admin_scripts(){
-
+    if(!(get_post_type() == 'shop_order')) {
+        return;
+    }
     wp_enqueue_style('admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ).'/assets/css/libanpost.css');
     wp_enqueue_script('admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ).'/assets/js/libanpost.js');
-
 }
 
 add_action( 'admin_enqueue_scripts', 'enqueuing_admin_scripts' );
@@ -101,13 +102,10 @@ function action_woocommerce_admin_order_data_after_order_details( $wccm_before_c
         <div class="libanpost-overlay" id="libanpost_overlay">
             <div class="libanpost-shipment-creation">
                 <span class="dashicons dashicons-no-alt" onclick="HideShipmentDetails()"></span>
-                <div>
-                    <fieldset>
-                        <legend>Billing Account</legend>
-                            <input type="text">
-                        </div>
-                    </fieldset>
-                </div>
+                <fieldset>
+                    <legend>Billing Account</legend>
+                    <input type="text">
+                </fieldset>
             </div>
         </div>
     ';
