@@ -6,6 +6,17 @@
  * Author: Samah Basheer | Ali Basheer
  **/
 
+/**
+ * Adds plugin page configure link
+ */
+function libanpost_shipping_plugin_links( $links ) {
+	$plugin_links = array(
+		'<a href="' . admin_url( 'admin.php?page=wc-settings&tab=settings_tab_api' ) . '">Configure</a>'
+	);
+	return array_merge( $plugin_links, $links );
+}
+add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'libanpost_shipping_plugin_links' );
+
 class WC_Settings_Tab_API
 {
 
