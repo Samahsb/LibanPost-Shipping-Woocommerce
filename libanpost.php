@@ -6,8 +6,11 @@
  * Author: Samah Basheer | Ali Basheer
  **/
 
+/**
+ * Exit if accessed directly.
+ */
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit;
 }
 
 include_once dirname( __FILE__ ) . '/includes/setting-class.php';
@@ -23,33 +26,35 @@ function libanpost_shipping_plugin_links( $links ) {
 }
 add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'libanpost_shipping_plugin_links' );
 
-
-//enqueue js and css files
-
-function enqueuing_admin_scripts(){
-    if(!(get_post_type() == 'shop_order')) {
+/**
+ * enqueue js and css files
+ */
+function libanpost_enqueuing_admin_scripts() {
+    if( ! ( get_post_type() == 'shop_order' ) ) {
         return;
     }
-    wp_enqueue_style('admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ).'/assets/css/libanpost.css');
-    wp_enqueue_script('admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ).'/assets/js/libanpost.js');
+
+    wp_enqueue_style( 'admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/css/libanpost.css' );
+    wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
 }
+add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
 
-add_action( 'admin_enqueue_scripts', 'enqueuing_admin_scripts' );
 
-//adding prepare LibanPost shipment button
-
-function action_woocommerce_admin_order_data_after_order_details( $wccm_before_checkout ) {
-    echo '
-        <div class="prepare-shipment-btn" onclick="ShowShipmentDetails()"> Prepare LibanPost Shipment </div>
-        <div class="libanpost-overlay" id="libanpost_overlay">
-            <div class="libanpost-shipment-creation">
-                <span class="dashicons dashicons-no-alt" onclick="HideShipmentDetails()"></span>
-                <fieldset>
-                    <legend>Billing Account</legend>
-                    <input type="text">
-                </fieldset>
-            </div>
-        </div>
-    ';
-};
-add_action( 'woocommerce_admin_order_data_after_order_details', 'action_woocommerce_admin_order_data_after_order_details', 10, 1 );
+/**
+ * adding prepare LibanPost shipment button
+ */
+function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_before_checkout ) {
+	?>
+	<div class="prepare-shipment-btn" onclick="ShowShipmentDetails()"> Prepare LibanPost Shipment </div>
+	<div class="libanpost-overlay" id="libanpost_overlay">
+		<div class="libanpost-shipment-creation">
+			<span class="dashicons dashicons-no-alt" onclick="HideShipmentDetails()"></span>
+			<fieldset>
+				<legend>Billing Account</legend>
+				<input type="text">
+			</fieldset>
+		</div>
+	</div>
+	<?php
+}
+add_action( 'woocommerce_admin_order_data_after_order_details', 'libanpost_woocommerce_admin_order_data_after_order_details', 10, 1 );
