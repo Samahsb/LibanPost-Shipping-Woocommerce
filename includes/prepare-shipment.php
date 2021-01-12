@@ -13,6 +13,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
 				<legend>Billing Account</legend>
 				<input type="text">
 			</fieldset>
+            <div class="prepare-shipment-btn create-shipment"> Create Shipment </div>
 		</div>
 	</div>
 	<?php
