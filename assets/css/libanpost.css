@@ -1,11 +1,13 @@
-.prepare-shipment-btn {
-    margin-top: 15px;
+.libanpost-btn {
     display: inline-block;
     background-color: #007cba;
     color: #ffffff;
     padding: 7px 13px;
     border-radius: 3px;
     cursor: pointer;
+}
+.libanpost-btn.prepare-shipment-btn {
+    margin-top: 15px;
 }
 .prepare-shipment-btn:hover {
     background-color: #0071a1;
@@ -23,6 +25,7 @@
     position: absolute;
     top: 4%;
     right: 1%;
+    cursor: pointer;
 }
 .libanpost-shipment-creation {
     max-width: 90%;
@@ -38,7 +41,14 @@
 .libanpost-shipment-creation fieldset {
     border: 1px solid #D6D6D6;
     padding: 10px;
+    margin-top: 10px;
 }
-.prepare-shipment-btn.create-shipment {
+.create-shipment {
+    display: flex;
     float: right;
+    margin-top: 15px;
+    align-items: flex-end;
+}
+.ajax-response {
+    margin-right: 15px;
 }

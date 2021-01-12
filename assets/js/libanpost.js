@@ -1,6 +1,9 @@
-function ShowShipmentDetails() {
+function showShipmentDetails() {
     libanpost_overlay.style.display = "block";
 }
-function HideShipmentDetails() {
+function hideShipmentDetails() {
     libanpost_overlay.style.display = "none";
+}
+function libanPostAJAXRequest() {
+    alert("hello");
 }
