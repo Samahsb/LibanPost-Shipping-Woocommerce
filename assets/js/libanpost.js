@@ -14,10 +14,8 @@ function libanPostAJAXRequest() {
     // http.send();
 
     jQuery.ajax({
-
         type: 'POST',
         url:'https://hemi.libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
-
         beforeSend:function() {
             libanpostLoader.style.display = "block";
         },
