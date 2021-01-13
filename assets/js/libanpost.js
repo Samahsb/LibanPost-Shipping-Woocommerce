@@ -19,29 +19,36 @@ function libanPostAJAXRequest() {
         url:'https://hemi.libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
 
         beforeSend:function() {
-            //loader()
+            libanpostLoader.style.display = "block";
         },
         success: function(msg) {
-            alert('success');
-            },
+            document.getElementById("response").innerHTML = 'success';
+            response.style.color = "green";
+        },
         error: function (jqXHR, exception) {
             var msg = '';
             if (jqXHR.status === 0) {
-                msg = 'Not connect. Verify Network.';
+                document.getElementById("response").innerHTML = 'Not connect. Verify Network';
+                response.style.color = "red";
             } else if (jqXHR.status == 404) {
-                msg = 'Requested page not found. [404]';
+                document.getElementById("response").innerHTML = 'Requested page not found.';
+                response.style.color = "red";
             } else if (jqXHR.status == 500) {
-                msg = 'Internal Server Error [500].';
+                document.getElementById("response").innerHTML = 'Internal Server Error.';
+                response.style.color = "red";
             } else if (exception === 'parsererror') {
-                msg = 'Requested JSON parse failed.';
+                document.getElementById("response").innerHTML = 'Requested JSON parse failed.';
+                response.style.color = "red";
             } else if (exception === 'timeout') {
-                msg = 'Time out error.';
+                document.getElementById("response").innerHTML = 'Time out error';
+                response.style.color = "red";
             } else if (exception === 'abort') {
-                msg = 'Ajax request aborted.';
+                document.getElementById("response").innerHTML = 'Ajax request aborted.';
+                response.style.color = "red";
             } else {
-                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                document.getElementById("response").innerHTML = 'Uncaught Error' + jqXHR.responseText;
+                response.style.color = "red";
             }
-            alert(msg);
         },
         timeout: 5000
     });
