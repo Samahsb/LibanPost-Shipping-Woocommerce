@@ -18,7 +18,8 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 <input type="text">
             </fieldset>
             <div class="create-shipment">
-                <div class="libanpost-ajax-response" id="response">
+                <div class="libanpost-ajax-response">
+                    <div id="response"></div>
                     <div class="libanpost-loader" id="libanpostLoader"></div>
                 </div>
                 <div class="libanpost-btn" onclick="libanPostAJAXRequest()"> Create Shipment </div>
