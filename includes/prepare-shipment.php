@@ -17,9 +17,9 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 <legend>Billing Account</legend>
                 <input type="text">
             </fieldset>
-            <div class="create-shipment" onclick="libanPostAJAXRequest()">
-                <div class="ajax-response"> <span class="dashicons dashicons-image-rotate"></span> </div>
-                <div class="libanpost-btn"> Create Shipment </div>
+            <div class="create-shipment">
+                <div class="ajax-response" id="response"> <span class="dashicons dashicons-image-rotate"></span> </div>
+                <div class="libanpost-btn" onclick="libanPostAJAXRequest()"> Create Shipment </div>
             </div>
 		</div>
 	</div>
