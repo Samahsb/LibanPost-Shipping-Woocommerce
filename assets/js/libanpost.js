@@ -16,15 +16,15 @@ function libanPostAJAXRequest() {
     jQuery.ajax({
         type: 'POST',
         url:'https://hemi.libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
+        dataType: 'json',
         beforeSend:function() {
             libanpostLoader.style.display = "block";
         },
-        success: function(msg) {
+        success: function() {
             document.getElementById("response").innerHTML = 'success';
             response.style.color = "green";
         },
         error: function (jqXHR, exception) {
-            var msg = '';
             if (jqXHR.status === 0) {
                 document.getElementById("response").innerHTML = 'Not connect. Verify Network';
                 response.style.color = "red";
