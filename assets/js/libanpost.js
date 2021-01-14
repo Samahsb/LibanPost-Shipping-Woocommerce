@@ -5,35 +5,37 @@ function hideShipmentDetails() {
     libanpost_overlay.style.display = "none";
 }
 function libanPostAJAXRequest() {
+    let d = new Date();
+    let ms = d.getTime();
     jQuery.ajax({
         type: 'POST',
         url:'https://hemi.Libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
         dataType: 'json',
         data: {
             "PK_Order": {
-                "PERSON_FID": "C????",
+                "PERSON_FID": personFID.value,
                 "ORDER_SPEED_ID": 1,
                 "ORDER_TYPE_ID": 1,
                 "ORDER_ENTITY_ID": 6,
-                "REFERENCE_ID": "Order reference ID",
-                "ESTIMATED_NOOFITEMS": 1,
+                "REFERENCE_ID": referenceID.value,
+                "ESTIMATED_NOOFITEMS": nbOfItems.value,
                 "ESTIMATED_WEIGHT": 2,
-                "ENTRY_DATE": "\/Date(1555577215404)\/",
+                "ENTRY_DATE": ms,
                 "EVTGMTDT": "\/Date(-62135596800000)\/",
                 "EVTTRACKINGNODECD": "TN789",
                 "ORDER_OCCURENCE_ID": 1,
-                "ORDER_DATE": "\/Date(1555577215404)\/",
+                "ORDER_DATE": ms,
                 "ORDER_STATUS": false,
                 "NOTIFICATIONTYPECD": "NL"
             },
             "Lst_PK_ORDER_DETAILS": [{
-                "REFERENCE_NO": "Tracking reference ID",
+                "REFERENCE_NO": referenceNb.value,
                 "DEPOSITOR_FULLNAME": "Depositor Full Name",
                 "DEPOSITOR_ADDRESS": "Lebanon",
                 "DEPOSITOR_PHONENO": "",
-                "CLIENT_FULLNAME": "Customer Name",
-                "CLIENT_ADDRESS": "Customer address",
-                "CLIENT_PHONENO": "01629629",
+                "CLIENT_FULLNAME": billingFullName.value,
+                "CLIENT_ADDRESS": document.getElementById("address").value,
+                "CLIENT_PHONENO": phoneNb.value,
                 "ESTIMATED_WEIGHT": 1,
                 "VEHICLE_TYPE_ID": 1,
                 "PREF_VISIT_DATE_FROM": "\/Date(1555577215404)\/",
@@ -44,8 +46,8 @@ function libanPostAJAXRequest() {
             }],
             "Lst_PK_ORDER_DETAILS_CHARGES": [{
                 "FEESID": 0,
-                "CURRENCYCD": "LBP",
-                "AMOUNT": 100000,
+                "CURRENCYCD": orderCurrency.value,
+                "AMOUNT": orderAmount.value,
                 "PAYMENTMODEID": 1
             }]
         },

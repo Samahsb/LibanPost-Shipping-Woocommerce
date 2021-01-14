@@ -26,7 +26,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 <legend>PK Order</legend>
                 <div>
                     <label>PERSON FID</label>
-                    <input type="text" value="<?php echo get_option("wc_settings_tab_erpcode") ?>">
+                    <input type="text" id="personFID" value="<?php echo get_option("wc_settings_tab_erpcode") ?>">
                 </div>
                 <div>
                     <label>ORDER SPEED ID</label>
@@ -38,15 +38,15 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 </div>
                 <div>
                     <label>ORDER ENTITY ID</label>
-                    <input type="text" value="">
+                    <input type="text">
                 </div>
                 <div>
                     <label>REFERENCE ID</label>
-                    <input type="text" value="<?php echo $order_id ?>">
+                    <input type="text" id="referenceID" value="<?php echo $order_id ?>">
                 </div>
                 <div>
                     <label>ESTIMATED NO OF ITEMS</label>
-                    <input type="text" value="<?php echo $total_quantity ?>">
+                    <input type="text" id="nbOfItems" value="<?php echo $total_quantity ?>">
                 </div>
                 <div>
                     <label>ESTIMATED WEIGHT</label>
@@ -85,7 +85,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 <legend>PK Order Details</legend>
                 <div>
                     <label>REFERENCE NO</label>
-                    <input type="text" value= "<?php echo $order_id ?>">
+                    <input type="text" id="referenceNb" value= "<?php echo $order_id ?>">
                 </div>
                 <div>
                     <label>DEPOSITOR FULLNAME</label>
@@ -101,11 +101,11 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 </div>
                 <div>
                     <label>CLIENT FULLNAME</label>
-                    <input type="text" value= "<?php echo $billing_fname. ' ' .$billing_lname ?>" >
+                    <input type="text" id="billingFullName" value= "<?php echo $billing_fname. ' ' .$billing_lname ?>" >
                 </div>
                 <div>
                     <label>CLIENT PHONENO</label>
-                    <input type="text" value="<?php echo $client_phonenb ?>">
+                    <input type="text" id="phoneNb" value="<?php echo $client_phonenb ?>">
                 </div>
                 <div>
                     <label>ESTIMATED WEIGHT</label>
@@ -137,7 +137,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 </div>
                 <div class="libanpost-textarea">
                     <label>CLIENT ADDRESS</label>
-                    <textarea rows="2"><?php echo $billing_address1. ' ' . $billing_address2. ' ' .$billing_city ?></textarea>
+                    <textarea rows="2" id="address"><?php echo $billing_address1. ' ' . $billing_address2. ' ' .$billing_city ?></textarea>
                 </div>
             </fieldset>
             <fieldset class="libanpost-fieldset">
@@ -148,11 +148,11 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 </div>
                 <div>
                     <label>CURRENCY CD</label>
-                    <input type="text" value= "<?php echo $order_currency ?>">
+                    <input type="text" id="orderCurrency" value= "<?php echo $order_currency ?>">
                 </div>
                 <div>
                     <label>AMOUNT</label>
-                    <input type="text" value=" <?php echo $order_total ?>">
+                    <input type="text" id="orderAmount" value=" <?php echo $order_total ?>">
                 </div>
                 <div>
                     <label>PAYMENT MODE ID</label>
