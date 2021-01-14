@@ -23,7 +23,6 @@
 }
 .libanpost-shipment-creation .dashicons-no-alt {
     position: absolute;
-    top: 4%;
     right: 1%;
     cursor: pointer;
 }
@@ -70,4 +69,26 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+fieldset.libanpost-fieldset div {
+    display: inline-block;
+    width: 49%;
+    margin: 9px 2px;
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+fieldset.libanpost-fieldset input {
+    float: right;
+    width: 100%;
+    border-radius: 0;
+    margin-top: 5px;
+}
+fieldset.libanpost-fieldset legend {
+    font-weight: bold;
+    font-size: 15px;
+}
+@media only screen and (max-width: 768px) {
+    fieldset.libanpost-fieldset div {
+        width: 100%;
+    }
 }
