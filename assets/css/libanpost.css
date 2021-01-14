@@ -87,6 +87,13 @@ fieldset.libanpost-fieldset legend {
     font-weight: bold;
     font-size: 15px;
 }
+fieldset.libanpost-fieldset .libanpost-textarea {
+    width: 100%;
+}
+fieldset.libanpost-fieldset .libanpost-textarea textarea {
+    width: 100%;
+    margin-top: 5px;
+}
 @media only screen and (max-width: 768px) {
     fieldset.libanpost-fieldset div {
         width: 100%;

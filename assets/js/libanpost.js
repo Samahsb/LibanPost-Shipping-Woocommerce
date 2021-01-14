@@ -7,7 +7,7 @@ function hideShipmentDetails() {
 function libanPostAJAXRequest() {
     jQuery.ajax({
         type: 'POST',
-        url:'https://hemi.libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
+        url:'https://hemi.Libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
         dataType: 'json',
         data: {
             "PK_Order": {
