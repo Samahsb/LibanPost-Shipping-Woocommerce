@@ -62,6 +62,7 @@ function libanPostAJAXRequest() {
                 response.style.color = "red";
             }
             document.getElementById("response").innerHTML = data.ErrorDescription;
+
         },
         complete: function() {
             libanpostLoader.style.display = "none";
