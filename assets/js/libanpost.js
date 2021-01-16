@@ -68,28 +68,24 @@ function libanPostAJAXRequest() {
             libanpostLoader.style.display = "none";
         },
         error: function (jqXHR, exception) {
+            let msg = '';
             if (jqXHR.status === 0) {
-                document.getElementById("response").innerHTML = 'Not connect. Verify Network';
-                response.style.color = "red";
+                msg = 'Not connect. Verify Network';
             } else if (jqXHR.status == 404) {
-                document.getElementById("response").innerHTML = 'Requested page not found.';
-                response.style.color = "red";
+                msg = 'Requested page not found.';
             } else if (jqXHR.status == 500) {
-                document.getElementById("response").innerHTML = 'Internal Server Error.';
-                response.style.color = "red";
+                msg = 'Internal Server Error.';
             } else if (exception === 'parsererror') {
-                document.getElementById("response").innerHTML = 'Requested JSON parse failed.';
-                response.style.color = "red";
+                msg = 'Requested JSON parse failed.';
             } else if (exception === 'timeout') {
-                document.getElementById("response").innerHTML = 'Time out error';
-                response.style.color = "red";
+                msg = 'Time out error';
             } else if (exception === 'abort') {
-                document.getElementById("response").innerHTML = 'Ajax request aborted.';
-                response.style.color = "red";
+                msg = 'Ajax request aborted.';
             } else {
-                document.getElementById("response").innerHTML = 'Uncaught Error' + jqXHR.responseText;
-                response.style.color = "red";
+                msg = 'Uncaught Error' + jqXHR.responseText;
             }
+            document.getElementById("response").innerHTML = msg;
+            response.style.color = "red";
         },
     });
 }
