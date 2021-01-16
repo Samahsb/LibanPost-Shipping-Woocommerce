@@ -9,7 +9,7 @@ function libanPostAJAXRequest() {
     let ms = d.getTime();
     jQuery.ajax({
         type: 'POST',
-        url:'https://hemi.Libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP',
+        url:'https://hemi.Libanpost.com/api/PKOrder?token=' + token.value + '&ERPCode=' + personFID.value,
         dataType: 'json',
         data: {
             "PK_Order": {

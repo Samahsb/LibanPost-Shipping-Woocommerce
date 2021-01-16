@@ -44,14 +44,14 @@ class WC_Settings_Tab_LibanPost_API {
 				'desc' => __('Email address for your site.', 'woocommerce-settings-tab-api'),
 				'id' => 'wc_settings_tab_email'
 			),
-			'api' => array(
-				'name' => __('API key', 'woocommerce-settings-tab-api'),
+			'token' => array(
+				'name' => __('Token', 'woocommerce-settings-tab-api'),
 				'type' => 'text',
-				'desc' => __('The API key for connecting with your LibanPost account.', 'woocommerce-settings-tab-api'),
-				'id' => 'wc_settings_tab_api'
+				'desc' => __('Given token for connecting with your LibanPost account.', 'woocommerce-settings-tab-api'),
+				'id' => 'wc_settings_tab_token'
 			),
 			'erpcode' => array(
-				'name' => __('ERPCode', 'woocommerce-settings-tab-api'),
+				'name' => __('ERP Code', 'woocommerce-settings-tab-api'),
 				'type' => 'text',
 				'desc' => __('The ERPCode for connecting with your LibanPost account.', 'woocommerce-settings-tab-api'),
 				'id' => 'wc_settings_tab_erpcode'

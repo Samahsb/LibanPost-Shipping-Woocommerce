@@ -39,3 +39,8 @@ function libanpost_enqueuing_admin_scripts() {
     wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
+
+
+/**
+ * add bulk order button
+ */

@@ -17,7 +17,8 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $billing_city = $order->get_billing_city();
     $order_date = $order->order_date;
     $order_status  = $order->get_status();
-	?>
+    ?>
+    <input style="display: none" type="text" id="token" value="<?php echo get_option("wc_settings_tab_token") ?>">
 	<div class="libanpost-btn prepare-shipment-btn" onclick="showShipmentDetails()"> Prepare LibanPost Shipment </div>
 	<div class="libanpost-overlay" id="libanpost_overlay">
 		<div class="libanpost-shipment-creation">
@@ -138,7 +139,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div class="libanpost-textarea">
                         <label>CLIENT ADDRESS</label>
-                        <textarea rows="2" id="address"><?php echo $billing_address1. ' ' . $billing_address2. ' ' .$billing_city ?></textarea>
+                        <textarea rows="2" id="address"><?php echo $billing_city. ' ' . $billing_address1. ' ' .$billing_address2 ?></textarea>
                     </div>
                 </fieldset>
                 <fieldset class="libanpost-fieldset">
