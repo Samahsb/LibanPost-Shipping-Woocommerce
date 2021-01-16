@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 include_once dirname( __FILE__ ) . '/includes/setting-class.php';
 include_once dirname( __FILE__ ) . '/includes/prepare-shipment.php';
+include_once dirname( __FILE__ ) . '/includes/libanpost-send-order.php';
 
 /**
  * Adds plugin page configure link
