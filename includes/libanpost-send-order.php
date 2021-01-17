@@ -1,9 +1,10 @@
 <?php
 
 function libanpost_send_order() {
-
+    $libanpost_token =  get_option("wc_settings_tab_token");
+    $libanpost_erpcode = get_option("wc_settings_tab_erpcode");
 	$request_data = $_POST['orderData'];
-	$request_url = "https://hemi.Libanpost.com/api/PKOrder?token=Token_Given&ERPCode=ERP";
+	$request_url = "https://hemi.Libanpost.com/api/PKOrder?token=".$libanpost_token."&ERPCode=".$libanpost_erpcode;
 
 	// Request the session
 	$response_json = wp_remote_post( $request_url, array(
