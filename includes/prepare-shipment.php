@@ -31,18 +31,6 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                         <input type="text" id="personFID" value="<?php echo get_option("wc_settings_tab_erpcode") ?>">
                     </div>
                     <div>
-                        <label>ORDER SPEED ID</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>ORDER TYPE ID</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>ORDER ENTITY ID</label>
-                        <input type="text">
-                    </div>
-                    <div>
                         <label>REFERENCE ID</label>
                         <input type="text" id="referenceID" value="<?php echo $order_id ?>">
                     </div>
@@ -51,36 +39,12 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                         <input type="text" id="nbOfItems" value="<?php echo $total_quantity ?>">
                     </div>
                     <div>
-                        <label>ESTIMATED WEIGHT</label>
-                        <input type="text">
-                    </div>
-                    <div>
                         <label>ENTRY DATE</label>
                         <input type="text" value="<?php echo $order_date ?>">
                     </div>
                     <div>
-                        <label>EVT GMT DT</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>EVT TRACKING NO DECD</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>ORDER OCCURENCE ID</label>
-                        <input type="text">
-                    </div>
-                    <div>
                         <label>ORDER DATE</label>
                         <input type="text" value="<?php echo $order_date ?>">
-                    </div>
-                    <div>
-                        <label>ORDER STATUS</label>
-                        <input type="text" value="<?php echo $order_status ?>">
-                    </div>
-                    <div>
-                        <label>NOTIFICATION TYPE CD</label>
-                        <input type="text">
                     </div>
                 </fieldset>
                 <fieldset class="libanpost-fieldset">
@@ -91,15 +55,15 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div>
                         <label>DEPOSITOR FULLNAME</label>
-                        <input type="text">
+                        <input type="text" id="depositorName" value= "<?php echo $billing_fname. ' ' .$billing_lname ?>">
                     </div>
                     <div>
                         <label>DEPOSITOR ADDRESS</label>
-                        <input type="text">
+                        <input type="text" id="depositorAddress" value="Lebanon">
                     </div>
                     <div>
                         <label>DEPOSITOR PHONE NO</label>
-                        <input type="text">
+                        <input type="text" value="<?php echo $client_phonenb ?>">
                     </div>
                     <div>
                         <label>CLIENT FULLNAME</label>
@@ -110,32 +74,8 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                         <input type="text" id="phoneNb" value="<?php echo $client_phonenb ?>">
                     </div>
                     <div>
-                        <label>ESTIMATED WEIGHT</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>VEHICLE TYPE ID</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>PREF VISIT DATE FROM</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>PREF VISIT DATE TO</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>EVTGMT DT</label>
-                        <input type="text">
-                    </div>
-                    <div>
-                        <label>ITEM DESC</label>
-                        <input type="text">
-                    </div>
-                    <div>
                         <label>Notes</label>
-                        <input type="text">
+                        <input type="text" id="notes">
                     </div>
                     <div class="libanpost-textarea">
                         <label>CLIENT ADDRESS</label>
@@ -145,20 +85,12 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                 <fieldset class="libanpost-fieldset">
                     <legend>PK Order Details Charges</legend>
                     <div>
-                        <label>FEES ID</label>
-                        <input type="text">
-                    </div>
-                    <div>
                         <label>CURRENCY CD</label>
                         <input type="text" id="orderCurrency" value= "<?php echo $order_currency ?>">
                     </div>
                     <div>
                         <label>AMOUNT</label>
                         <input type="text" id="orderAmount" value=" <?php echo $order_total ?>">
-                    </div>
-                    <div>
-                        <label>PAYMENT MODE ID</label>
-                        <input type="text">
                     </div>
                 </fieldset>
             </form>
