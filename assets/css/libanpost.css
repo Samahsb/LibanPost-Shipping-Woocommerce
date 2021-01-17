@@ -1,3 +1,9 @@
+.libanpost-main {
+    display: inline-grid;
+}
+.libanpost-main input {
+    margin-top: 10px;
+}
 .libanpost-btn {
     display: inline-block;
     background-color: #007cba;

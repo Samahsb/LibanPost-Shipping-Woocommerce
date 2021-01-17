@@ -18,7 +18,10 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $order_date = $order->order_date;
     $order_status  = $order->get_status();
     ?>
-	<div class="libanpost-btn prepare-shipment-btn" onclick="showShipmentDetails()"> Prepare LibanPost Shipment </div>
+    <div class="libanpost-main">
+        <div class="libanpost-btn prepare-shipment-btn" onclick="showShipmentDetails()"> Prepare LibanPost Shipment </div>
+        <input type="text" value="Hey">
+    </div>
 	<div class="libanpost-overlay" id="libanpost_overlay">
 		<div class="libanpost-shipment-creation">
 			<span class="dashicons dashicons-no-alt" onclick="hideShipmentDetails()"></span>
