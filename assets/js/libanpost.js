@@ -17,11 +17,11 @@ function libanPostAJAXRequest() {
             "REFERENCE_ID": referenceID.value,
             "ESTIMATED_NOOFITEMS": nbOfItems.value,
             "ESTIMATED_WEIGHT": 2,
-            "ENTRY_DATE": ms,
+            "ENTRY_DATE": "\/Date(1555577215404)\/",
             "EVTGMTDT": "\/Date(-62135596800000)\/",
             "EVTTRACKINGNODECD": "TN789",
             "ORDER_OCCURENCE_ID": 1,
-            "ORDER_DATE": ms,
+            "ORDER_DATE": "\/Date(1555577215404)\/",
             "ORDER_STATUS": false,
             "NOTIFICATIONTYPECD": "NL"
         },
