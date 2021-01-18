@@ -4,7 +4,7 @@ function libanpost_send_order() {
     $libanpost_token =  get_option("wc_settings_tab_token");
     $libanpost_erpcode = get_option("wc_settings_tab_erpcode");
 	$request_data = $_POST['orderData'];
-	$request_url = "https://hemi.Libanpost.com/api/PKOrder?token=".$libanpost_token."&ERPCode=".$libanpost_erpcode;
+	$request_url = "https://hemi.Libanpost.com/api/PKOrder?token=" . $libanpost_token . "&ERPCode=" . $libanpost_erpcode;
 
 	// Request the session
 	$response_json = wp_remote_post( $request_url, array(
@@ -19,6 +19,10 @@ function libanpost_send_order() {
 	}
 
 	$response = json_decode( $response_json['body'], true );
+
+	if( $response['ErrorCode'] == 0 ) {
+		wc_add_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_shipping_nb', $response['OrderNbr'] ) ;
+	}
 
 	wp_send_json($response);
 }

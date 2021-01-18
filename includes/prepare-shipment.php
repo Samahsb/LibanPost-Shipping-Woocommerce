@@ -17,11 +17,12 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $billing_city = $order->get_billing_city();
     $order_date = $order->order_date;
     $order_status  = $order->get_status();
+    $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true )
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">
-        <div class="libanpost-btn prepare-shipment-btn" id="prepareShipmentBtn" onclick="showShipmentDetails()"> Prepare LibanPost Shipment </div>
-        <input type="text" id="libanpostOrderNumber" name="libanpostOrderNumber" disabled>
+        <input <?php echo ( ! empty ( $libanpost_number ) ) ? 'disabled ' : '';?>class="libanpost-btn prepare-shipment-btn" value="Prepare LibanPost Shipment" id="prepareShipmentBtn" onclick="showShipmentDetails()">
+        <input type="text" id="libanpostOrderNumber" name="libanpostOrderNumber" disabled <?php echo ( ! empty( $libanpost_number ) )? 'value="' . $libanpost_number . '"' : '';?>>
     </div>
 	<div class="libanpost-overlay" id="libanpost_overlay">
 		<div class="libanpost-shipment-creation">
