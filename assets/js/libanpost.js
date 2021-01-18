@@ -97,3 +97,9 @@ function libanPostAJAXRequest() {
         },
     });
 }
+
+(function($){
+    $(document).ready(function(){
+        $('.post-type-shop_order .page-title-action').after( '<a href="#" id="request-libanpost-shipment" class="page-title-action">Request Libanpost Shipment</a>' )
+    });
+})(jQuery);
