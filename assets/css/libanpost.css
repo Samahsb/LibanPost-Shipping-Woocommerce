@@ -1,20 +1,9 @@
-.libanpost-main {
-    display: inline-grid;
-}
 .libanpost-main input {
     margin-top: 10px;
     color: #444444;
     border: 1px solid #444444;
 }
-.libanpost-btn {
-    display: inline-block;
-    background-color: #007cba;
-    color: #ffffff;
-    padding: 7px 13px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-.libanpost-btn.prepare-shipment-btn {
+.button-primary.prepare-shipment-btn {
     margin-top: 15px;
 }
 .prepare-shipment-btn:hover {

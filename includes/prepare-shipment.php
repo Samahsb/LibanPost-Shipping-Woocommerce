@@ -22,9 +22,9 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">
-        <input <?php echo ( ! empty ( $libanpost_number ) ) ? 'disabled ' : '';?>class="libanpost-btn prepare-shipment-btn" value="Prepare LibanPost Shipment" id="prepareShipmentBtn" onclick="showShipmentDetails()">
+        <input <?php echo ( ! empty ( $libanpost_number ) ) ? 'disabled ' : '';?>class="button-primary prepare-shipment-btn" value="Prepare LibanPost Shipment" id="prepareShipmentBtn" size="24" onclick="showShipmentDetails()">
         <input type="text" id="libanpostOrderNumber" name="libanpostOrderNumber" disabled <?php echo ( ! empty( $libanpost_number ) )? 'value="' . $libanpost_number . '"' : '';?>>
-        <input type="text" id="libanpostSentProject" name="libanpostSentProject" disabled value="<?php echo ( ! empty( $libanpost_sent ) )? 'Sent to Libanpost' : 'Not Sent to Libanpost';?>">
+        <input type="text" id="libanpostSentProject" name="libanpostSentProject" disabled value="<?php echo ( ! empty( $libanpost_sent ) )? 'Sent to LibanPost' : 'Not Sent to LibanPost';?>">
     </div>
 	<div class="libanpost-overlay" id="libanpost_overlay">
 		<div class="libanpost-shipment-creation">
@@ -103,7 +103,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     <div id="response"></div>
                     <div class="libanpost-loader" id="libanpostLoader"></div>
                 </div>
-                <div class="libanpost-btn" onclick="libanPostAJAXRequest()"> Create Shipment </div>
+                <input class="button-primary create-shipment-btn" value="Create Shipment" id="createShipmentBtn" size="14" onclick="libanPostAJAXRequest()">
             </div>
 		</div>
 	</div>
