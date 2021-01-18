@@ -22,7 +22,8 @@ function libanpost_send_order() {
 
 	if( $response['ErrorCode'] == 0 ) {
 		wc_add_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_shipping_nb', $response['OrderNbr'] ) ;
-
+        $order = new WC_Order($_POST['orderData']['PK_Order']['REFERENCE_ID']);
+        $order->update_status( 'completed' );
 	}
 
 	wp_send_json($response);
