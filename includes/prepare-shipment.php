@@ -18,14 +18,14 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $order_date = $order->order_date;
     $order_status  = $order->get_status();
     ?>
+    <form action="#" method="POST">
     <div class="libanpost-main">
-        <div class="libanpost-btn prepare-shipment-btn" onclick="showShipmentDetails()"> Prepare LibanPost Shipment </div>
-        <input type="text" value="Hey">
+        <div class="libanpost-btn prepare-shipment-btn" id="prepareShipmentBtn" onclick="showShipmentDetails()"> Prepare LibanPost Shipment </div>
+        <input type="text" id="libanpostOrderNumber" name="libanpostOrderNumber" disabled>
     </div>
 	<div class="libanpost-overlay" id="libanpost_overlay">
 		<div class="libanpost-shipment-creation">
 			<span class="dashicons dashicons-no-alt" onclick="hideShipmentDetails()"></span>
-            <form action="#">
                 <fieldset class="libanpost-fieldset">
                     <legend>PK Order</legend>
                     <div>
@@ -95,7 +95,6 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                         <input type="text" id="orderAmount" value=" <?php echo $order_total ?>">
                     </div>
                 </fieldset>
-            </form>
             <div class="create-shipment">
                 <div class="libanpost-ajax-response">
                     <div id="response"></div>
@@ -105,6 +104,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
             </div>
 		</div>
 	</div>
-	<?php
+    </form>
+    <?php
 }
 add_action( 'woocommerce_admin_order_data_after_order_details', 'libanpost_woocommerce_admin_order_data_after_order_details', 10, 1 );

@@ -64,11 +64,13 @@ function libanPostAJAXRequest() {
         success: function(data) {
             if(data.ErrorCode == 0) {
                 response.style.color = "green";
+                libanpostOrderNumber.style.display = "block";
+                libanpostOrderNumber.value = data.OrderNbr;
+                prepareShipmentBtn.style.pointerEvents = "none";
             } else {
                 response.style.color = "red";
             }
             document.getElementById("response").innerHTML = data.ErrorDescription;
-
         },
         complete: function() {
             libanpostLoader.style.display = "none";
