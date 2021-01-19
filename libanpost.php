@@ -13,6 +13,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/**
+ * Check if WooCommerce plugin is activated
+ */
+if ( ! is_plugin_active('woocommerce/woocommerce.php') ) {
+    deactivate_plugins('libanpost-shipping-woocommerce/libanpost.php');
+}
+
 include_once dirname( __FILE__ ) . '/includes/setting-class.php';
 include_once dirname( __FILE__ ) . '/includes/prepare-shipment.php';
 include_once dirname( __FILE__ ) . '/includes/libanpost-send-order.php';
