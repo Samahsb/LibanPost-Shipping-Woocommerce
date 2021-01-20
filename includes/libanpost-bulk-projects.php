@@ -1,6 +1,6 @@
 <?php
 /**
- * register LibanPost projects page
+ * register LibanPost list of projects page
  */
 function libanpost_register_projects_list_page() {
     add_submenu_page( 'woocommerce', 'LibanPost Projects List', 'LibanPost Projects List', 'manage_options', 'libanpost-projects-list', 'libanpost_project_page_callback', 2 );
@@ -17,7 +17,7 @@ function libanpost_project_page_callback() {
 add_action('admin_menu', 'libanpost_register_projects_list_page',99);
 
 /**
- * register LibanPost bulk orders page
+ * register LibanPost submit project page
  */
 function libanpost_register_submit_project_page() {
     add_submenu_page( 'woocommerce', 'Submit LibanPost Project', 'Submit LibanPost Project', 'manage_options', 'submit-libanpost-project', 'libanpost_submit_project_page_callback', 3 );
@@ -29,5 +29,6 @@ function libanpost_submit_project_page_callback() {
         <a href="#" class="page-title-action">Submit LibanPost Project</a>
     </div>
     <?php
+    include_once dirname( __FILE__ ) . '/libanpost-list-table.php';
 }
 add_action('admin_menu', 'libanpost_register_submit_project_page',99);
