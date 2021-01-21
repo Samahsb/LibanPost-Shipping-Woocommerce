@@ -23,7 +23,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     <form action="#" method="POST">
     <div class="libanpost-main">
         <input <?php echo ( ! empty ( $libanpost_number ) ) ? 'disabled ' : '';?>class="button-primary prepare-shipment-btn" value="Prepare LibanPost Shipment" id="prepareShipmentBtn" size="24" onclick="showShipmentDetails()">
-        <input type="text" id="libanpostOrderNumber" name="libanpostOrderNumber" disabled <?php echo ( ! empty( $libanpost_number ) )? 'value="' . $libanpost_number . '"' : '';?>>
+        <input type="text" id="libanpostOrderNumber" name="libanpostOrderNumber" disabled <?php echo ( ! empty( $libanpost_number ) )? 'value="' . $libanpost_number . '"' : 'No order number yet';?>>
         <input type="text" id="libanpostSentProject" name="libanpostSentProject" disabled value="<?php echo ( ! empty( $libanpost_sent ) )? 'Sent to LibanPost' : 'Not Sent to LibanPost';?>">
     </div>
 	<div class="libanpost-overlay" id="libanpost_overlay">
