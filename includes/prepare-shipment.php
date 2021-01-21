@@ -103,7 +103,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     <div id="response"></div>
                     <div class="libanpost-loader" id="libanpostLoader"></div>
                 </div>
-                <input type="text" size="14" class="button-primary create-shipment-btn" value="Create Shipment" id="createShipmentBtn" onclick="libanPostAJAXRequest()">
+                <input type="button" class="button-primary create-shipment-btn" value="Create Shipment" id="createShipmentBtn" onclick="libanPostAJAXRequest()">
             </div>
 		</div>
 	</div>
