@@ -1,8 +1,6 @@
 <?php
 
-require_once (ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
-
-class LibanPostTableClass extends WP_List_Table {
+class LibanPost_Project_Orders extends WP_List_Table {
     var $data = array (
         array("id" => 1, "name" => "Samah", "email" => "samah@gmail.com", "libanpost order number" => 1234),
         array("id" => 2, "name" => "Samah", "email" => "samah@gmail.com", "libanpost order number" => 1234),
@@ -36,10 +34,3 @@ class LibanPostTableClass extends WP_List_Table {
         }
     }
 }
-
-function libanpost_list_table_layout() {
-    $libanpost_list_table = new LibanPostTableClass();
-    $libanpost_list_table->prepare_items();
-    $libanpost_list_table->display();
-}
-libanpost_list_table_layout();

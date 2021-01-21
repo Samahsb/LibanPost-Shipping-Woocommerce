@@ -20,10 +20,15 @@ if ( ! is_plugin_active('woocommerce/woocommerce.php') ) {
     deactivate_plugins('libanpost-shipping-woocommerce/libanpost.php');
 }
 
+if ( ! class_exists( 'WP_List_Table' ) ) {
+	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
+}
+
 include_once dirname( __FILE__ ) . '/includes/setting-class.php';
 include_once dirname( __FILE__ ) . '/includes/prepare-shipment.php';
 include_once dirname( __FILE__ ) . '/includes/libanpost-send-order.php';
 include_once dirname( __FILE__ ) . '/includes/libanpost-bulk-projects.php';
+include_once dirname( __FILE__ ) . '/includes/class-list-table-project-orders.php';
 
 /**
  * Adds plugin page configure link
