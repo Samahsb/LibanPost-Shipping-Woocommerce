@@ -26,9 +26,11 @@ function libanpost_submit_project_page_callback() {
     ?>
     <div class="wrap">
         <h1 class="wp-heading-inline libanpost-heading">Submit LibanPost Project</h1>
-        <a href="#" class="page-title-action">Submit LibanPost Project</a>
-    </div>
     <?php
     include_once dirname( __FILE__ ) . '/libanpost-list-table.php';
+    ?>
+        <input type="button" value="Submit Project" class="button-primary" style="float: right;" onclick="submitLibanPostProject()">
+    </div>
+    <?php
 }
 add_action('admin_menu', 'libanpost_register_submit_project_page',99);

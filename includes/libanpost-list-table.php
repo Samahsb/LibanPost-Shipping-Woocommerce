@@ -37,9 +37,9 @@ class LibanPostTableClass extends WP_List_Table {
     }
 }
 
-//function libanpost_list_table_layout() {
+function libanpost_list_table_layout() {
     $libanpost_list_table = new LibanPostTableClass();
     $libanpost_list_table->prepare_items();
     $libanpost_list_table->display();
-//}
-//libanpost_list_table_layout();
+}
+libanpost_list_table_layout();
