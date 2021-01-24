@@ -4,6 +4,9 @@ function showShipmentDetails() {
 function hideShipmentDetails() {
     libanpost_overlay.style.display = "none";
 }
+function submitLibanPostProject() {
+    alert('hello');
+}
 function libanPostAJAXRequest() {
     let d = new Date();
     let ms = d.getTime();

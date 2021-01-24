@@ -45,11 +45,17 @@ add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), 'libanpost_shi
  * enqueue js and css files
  */
 function libanpost_enqueuing_admin_scripts() {
-    if( ! ( get_post_type() == 'shop_order' ) ) {
+//    if( ! ( get_post_type() == 'shop_order' )  ) {
+//        return;
+//    }
+    if( (get_post_type() == 'shop_order' ) || ( admin_url("admin.php?page=submit-libanpost-project"))) {
+
+        wp_enqueue_style( 'admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/css/libanpost.css' );
+        wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
+
+    } else {
         return;
     }
 
-    wp_enqueue_style( 'admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/css/libanpost.css' );
-    wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );

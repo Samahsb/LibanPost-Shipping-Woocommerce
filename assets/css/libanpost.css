@@ -91,6 +91,9 @@ fieldset.libanpost-fieldset .libanpost-textarea textarea {
     width: 100%;
     margin-top: 5px;
 }
+.libanpost-submit-btn.button-primary {
+    float: right;
+}
 @media only screen and (max-width: 768px) {
     fieldset.libanpost-fieldset div {
         width: 100%;

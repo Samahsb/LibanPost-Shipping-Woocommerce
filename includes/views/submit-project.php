@@ -3,5 +3,5 @@
 	<form id="" method="get">
 		<?php $project_orders->display(); ?>
 	</form>
-    <p><a href="#" onclick="submitLibanPostProject()" class="button button-primary">Submit Project</a></p>
+    <input type="button" value="Submit Project" onclick="submitLibanPostProject()" class="libanpost-submit-btn button-primary">
 </div>
