@@ -48,6 +48,7 @@
 .libanpost-ajax-response {
     margin: auto 10px;
     max-width: 500px;
+    display: inline-block;
 }
 .libanpost-loader {
     border: 3px solid #a9a9a9;
@@ -91,8 +92,9 @@ fieldset.libanpost-fieldset .libanpost-textarea textarea {
     width: 100%;
     margin-top: 5px;
 }
-.libanpost-submit-btn.button-primary {
-    float: right;
+.submit-project {
+    display: flex;
+    align-items: flex-end;
 }
 @media only screen and (max-width: 768px) {
     fieldset.libanpost-fieldset div {

@@ -4,13 +4,78 @@ function showShipmentDetails() {
 function hideShipmentDetails() {
     libanpost_overlay.style.display = "none";
 }
+let d = new Date();
+let ms = d.getTime();
 function submitLibanPostProject() {
-    alert('hello');
+    let projectData = {
+        "Cls_PKOrder": {
+            "PERSON_FID": erpCode.value,
+            "ORDER_SPEED_ID": 1,
+            "ORDER_TYPE_ID": 1,
+            "ORDER_ENTITY_ID": 6,
+            "REFERENCE_ID": "Order reference ID",
+            "ESTIMATED_NOOFITEMS": 1,
+            "ESTIMATED_WEIGHT": 2,
+            "ENTRY_DATE": "\/Date("+ ms +")\/",
+            "EVTGMTDT": "\/Date(-62135596800000)\/",
+            "EVTTRACKINGNODECD": "TN790",
+            "ORDER_OCCURENCE_ID": 1,
+            "ORDER_DATE": "\/Date("+ ms +")\/",
+            "ORDER_STATUS": false,
+            "NOTIFICATIONTYPECD": "NL"
+        },
+        "Cls_Items": [{
+            "PO_DETAILS_FID":"tracking number1"
+        }, {
+            "PO_DETAILS_FID":"tracking number2"
+        }]
+    };
+    jQuery.ajax({
+        type: 'POST',
+        url: ajaxurl,
+        dataType: 'json',
+        data: {
+            action: 'libanpost_send_project',
+            orderData: projectData,
+        },
+        beforeSend:function() {
+            projectLoader.style.display = "block";
+            document.getElementById("projectResponse").innerHTML = '';
+        },
+        success: function(data) {
+            if(data.ErrorCode == 0) {
+                projectResponse.style.color = "green";
+            } else {
+                projectResponse.style.color = "red";
+            }
+            document.getElementById("projectResponse").innerHTML = data.ErrorDescription;
+        },
+        complete: function() {
+            projectLoader.style.display = "none";
+        },
+        error: function (jqXHR, exception) {
+            let msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect. Verify Network';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found.';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error.';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error' + jqXHR.responseText;
+            }
+            document.getElementById("projectResponse").innerHTML = msg;
+            projectResponse.style.color = "red";
+        },
+    });
 }
 function libanPostAJAXRequest() {
-    let d = new Date();
-    let ms = d.getTime();
-
     let orderData = {
         "PK_Order": {
             "PERSON_FID": personFID.value,
