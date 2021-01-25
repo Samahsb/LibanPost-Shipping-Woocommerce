@@ -5,14 +5,23 @@ class LibanPost_Project_Orders extends WP_List_Table {
     public function prepare_items() {
 
 	    $orders = wc_get_orders( array(
+            'limit' => -1,
+            'type'=> 'shop_order',
 		    'orderby'   => 'date',
 		    'order'     => 'DESC',
-//		    'meta_query' => array(
-//			    array(
-//				    'key' => 'var_rate',
-//				    'compare' => 'NOT EXISTS',
-//			    )
-//		    )
+		    'meta_query' => array(
+		        'relation' => 'OR',
+			    array(
+				    'key' => 'LibanPost Order Number',
+                    'value'   => '',
+				    'compare' => '!='
+			    ),
+                array(
+                    'key' => 'libanpost_sent_project',
+                    'value'   => '',
+                    'compare' => '='
+                )
+		    )
 	    ));
 
 	    foreach ( $orders as $order ) {
