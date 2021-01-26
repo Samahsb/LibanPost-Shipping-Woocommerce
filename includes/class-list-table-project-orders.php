@@ -12,9 +12,9 @@ class LibanPost_Project_Orders extends WP_List_Table {
 		    'meta_query' => array(
 		        'relation' => 'OR',
 			    array(
-				    'key' => 'LibanPost Order Number',
-                    'value'   => '',
-				    'compare' => '!='
+				    'key' => 'var_rate',
+                    'value'   => 'libanpost_shipping_nb',
+                    'compare' => '!=',
 			    ),
                 array(
                     'key' => 'libanpost_sent_project',
