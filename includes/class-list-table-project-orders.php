@@ -9,28 +9,20 @@ class LibanPost_Project_Orders extends WP_List_Table {
             'type'=> 'shop_order',
 		    'orderby'   => 'date',
 		    'order'     => 'DESC',
-		    'meta_query' => array(
-		        'relation' => 'OR',
-			    array(
-				    'key' => 'var_rate',
-                    'value'   => 'libanpost_shipping_nb',
-                    'compare' => '!=',
-			    ),
-                array(
-                    'key' => 'libanpost_sent_project',
-                    'value'   => '',
-                    'compare' => '='
-                )
-		    )
 	    ));
 
 	    foreach ( $orders as $order ) {
-		    $row['id']           = $order->get_id();
-		    $row['name']         = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();
-		    $row['email']        = $order->get_billing_email();
-		    $row['libanpost-nb'] = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
+		    if (
+		    	! empty ( wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true ) )
+			    &&  empty ( wc_get_order_item_meta( $order->get_id(), 'libanpost_send_project', true ) )
+		    ) {
+			    $row['id']           = $order->get_id();
+			    $row['name']         = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();
+			    $row['email']        = $order->get_billing_email();
+			    $row['libanpost-nb'] = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
 
-		    $data[] = $row;
+			    $data[] = $row;
+		    }
 	    }
 
         $columns = $this->get_columns();

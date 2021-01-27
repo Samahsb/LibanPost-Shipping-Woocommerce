@@ -54,3 +54,11 @@ function libanpost_enqueuing_admin_scripts() {
 	wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
+
+//add_filter( 'woocommerce_get_wp_query_args', function( $wp_query_args, $query_vars ){
+//	if ( isset( $query_vars['meta_query'] ) ) {
+//		$meta_query = isset( $wp_query_args['meta_query'] ) ? $wp_query_args['meta_query'] : [];
+//		$wp_query_args['meta_query'] = array_merge( $meta_query, $query_vars['meta_query'] );
+//	}
+//	return $wp_query_args;
+//}, 10, 2 );
