@@ -7,6 +7,7 @@ function hideShipmentDetails() {
 let d = new Date();
 let ms = d.getTime();
 function submitLibanPostProject() {
+    alert(dataItems);
     let projectData = {
         "Cls_PKOrder": {
             "PERSON_FID": erpCode.value,
