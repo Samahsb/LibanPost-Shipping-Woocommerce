@@ -7,7 +7,14 @@ function hideShipmentDetails() {
 let d = new Date();
 let ms = d.getTime();
 function submitLibanPostProject() {
-    alert(dataItems);
+
+    let clsItems = [];
+
+    for (i = 0; i < dataItems.length; i++) {
+        let item = {'PO_DETAILS_FID':dataItems[i]['libanpost-nb']};
+        clsItems.push(item);
+    }
+
     let projectData = {
         "Cls_PKOrder": {
             "PERSON_FID": erpCode.value,
@@ -25,11 +32,7 @@ function submitLibanPostProject() {
             "ORDER_STATUS": false,
             "NOTIFICATIONTYPECD": "NL"
         },
-        "Cls_Items": [{
-            "PO_DETAILS_FID":"tracking number1"
-        }, {
-            "PO_DETAILS_FID":"tracking number2"
-        }]
+        "Cls_Items": clsItems
     };
     jQuery.ajax({
         type: 'POST',
@@ -37,6 +40,7 @@ function submitLibanPostProject() {
         dataType: 'json',
         data: {
             action: 'libanpost_send_project',
+            dataItems: dataItems,
             orderData: projectData,
         },
         beforeSend:function() {

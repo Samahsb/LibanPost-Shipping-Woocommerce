@@ -1,12 +1,7 @@
 <div class="wrap">
 	<h1 class="wp-heading-inline libanpost-heading"><?php echo esc_html( get_admin_page_title() ); ?></h1>
-    <pre>
-        <?php
-        var_dump($project_orders->items);
-        ?>
-    </pre>
     <script>
-        let dataItems = 'ssss';
+        let dataItems = <?php echo json_encode($project_orders->items); ?>;
     </script>
 	<form id="" method="get">
 		<?php $project_orders->display();
