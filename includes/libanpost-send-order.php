@@ -50,8 +50,10 @@ function libanpost_send_project() {
     }
 
     $response = json_decode( $response_json['body'], true );
-
     if( $response['ErrorCode'] == 0 ) {
+        for($i = 0; $i < count(dataItems) ; $i+=1) {
+            wc_add_order_item_meta( $_POST['dataItems'][$i]['id'], 'libanpost_send_project', $_POST['dataItems'][$i]['id'] );
+        }
     	// read from dataItems $_POST['dataItems'];
         // for loop on all the submitted order ids
     	//wc_add_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_send_project', 'sent' ) ;
