@@ -1,4 +1,6 @@
 .libanpost-main input {
+    width: 80%;
+    text-align: center;
     margin-top: 10px;
     color: #444444;
     border: 1px solid #444444;
