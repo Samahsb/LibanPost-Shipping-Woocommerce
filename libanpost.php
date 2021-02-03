@@ -54,3 +54,31 @@ function libanpost_enqueuing_admin_scripts() {
 	wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
+
+function libanpost_wpo_wcpdf_before_order_data( $type, $order ){
+
+	if( $type != 'packing-slip' ) {
+		return;
+	}
+
+	$libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
+	$libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_send_project', true );
+	?>
+
+	<?php if ( ! empty( $libanpost_number ) ) { ?>
+	<tr class="order-libanpost-number">
+		<th>LibanPost Order Nb:</th>
+		<td><?php echo $libanpost_number; ?></td>
+	</tr>
+	<?php } ?>
+
+	<?php if ( ! empty( $libanpost_sent ) ) { ?>
+	<tr class="order-libanpost-project">
+		<th>LibanPost Project ID:</th>
+		<td><?php echo $libanpost_sent; ?></td>
+	</tr>
+	<?php } ?>
+
+	<?php
+}
+add_action( 'wpo_wcpdf_before_order_data', 'libanpost_wpo_wcpdf_before_order_data', 10, 2 );
