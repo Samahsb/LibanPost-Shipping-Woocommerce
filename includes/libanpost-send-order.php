@@ -35,6 +35,7 @@ function libanpost_send_project() {
     $libanpost_token =  get_option("wc_settings_tab_token");
     $libanpost_erpcode = get_option("wc_settings_tab_erpcode");
     $request_data = $_POST['orderData'];
+    $data_items = $_POST['dataItems'];
     $request_url = "https://hemi.Libanpost.com/api/PKOrder?Mode=N&token=" . $libanpost_token . "&ERPCode=" . $libanpost_erpcode;
 
     // Request the session
@@ -51,12 +52,10 @@ function libanpost_send_project() {
 
     $response = json_decode( $response_json['body'], true );
     if( $response['ErrorCode'] == 0 ) {
-        for($i = 0; $i < count(dataItems) ; $i+=1) {
-            wc_add_order_item_meta( $_POST['dataItems'][$i]['id'], 'libanpost_send_project', $_POST['dataItems'][$i]['id'] );
-        }
-    	// read from dataItems $_POST['dataItems'];
-        // for loop on all the submitted order ids
-    	//wc_add_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_send_project', 'sent' ) ;
+
+    	foreach ( $data_items as $item ) {
+		    wc_add_order_item_meta( $item['id'], 'libanpost_send_project', $response['OrderNbr'] );
+	    }
     }
 
     wp_send_json($response);
