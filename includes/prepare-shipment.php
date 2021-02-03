@@ -18,7 +18,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $order_date = $order->order_date;
     $order_status  = $order->get_status();
     $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
-    $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_sent_project', true );
+    $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_send_project', true );
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">

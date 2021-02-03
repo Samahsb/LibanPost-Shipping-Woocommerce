@@ -172,6 +172,6 @@ function libanPostAJAXRequest() {
 }
 (function($){
     $(document).ready(function(){
-        $('.post-type-shop_order .page-title-action').after( '<a href="#" id="request-libanpost-shipment" class="page-title-action">Request Libanpost Shipment</a>' )
+        $('.post-type-shop_order .page-title-action').after( '<a href="/wp-admin/admin.php?page=submit-libanpost-project" id="request-libanpost-shipment" class="page-title-action">Submit Libanpost Project</a>' )
     });
 })(jQuery);
