@@ -20,6 +20,7 @@ class LibanPost_Project_Orders extends WP_List_Table {
 			    $row['name']         = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();
 			    $row['email']        = $order->get_billing_email();
 			    $row['libanpost-nb'] = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
+                $row['remove-submitted-order'] = '<div> <button type="button" class="libanpost-remove-btn" onclick="removeOrder()">Remove</button> </div>';
 
 			    $data[] = $row;
 		    }
@@ -46,7 +47,8 @@ class LibanPost_Project_Orders extends WP_List_Table {
             "id" => "Order ID",
             "name" => "Name",
             "email" => "Email",
-            "libanpost-nb" => "LibanPost Order Number"
+            "libanpost-nb" => "LibanPost Order Number",
+            "remove-submitted-order" => ""
         );
         return $columns;
     }

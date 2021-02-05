@@ -175,3 +175,7 @@ function libanPostAJAXRequest() {
         $('.post-type-shop_order .page-title-action').after( '<a href="/wp-admin/admin.php?page=submit-libanpost-project" id="request-libanpost-shipment" class="page-title-action">Submit Libanpost Project</a>' )
     });
 })(jQuery);
+
+function removeOrder() {
+    alert('hey');
+}
