@@ -61,3 +61,26 @@ function libanpost_send_project() {
     wp_send_json($response);
 }
 add_action( 'wp_ajax_libanpost_send_project', 'libanpost_send_project' );
+
+function libanpost_remove_order() {
+
+    $request_url = 'https://develop.dalicosmetics.com/wp-admin/admin.php?page=submit-libanpost-project';
+
+    // Request the session
+    $response_json = wp_remote_post( $request_url, array(
+        'body'	  => json_encode (),
+        'headers' => array(
+            'content-type' => 'application/json'
+        ),
+    ) );
+
+    if ( is_wp_error( $response_json ) ) {
+        wp_send_json('WordPress failed to connect with libanpost server');
+    }
+
+    $response = json_decode( $response_json['body'], true );
+    if( $response == 0 ) {
+         wc_add_order_item_meta( 10008, 'libanpost_send_project', '');
+    }
+}
+add_action( 'wp_ajax_remove_order', 'libanpost_remove_order' );

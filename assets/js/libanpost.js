@@ -177,5 +177,15 @@ function libanPostAJAXRequest() {
 })(jQuery);
 
 function removeOrder() {
-    alert('hey');
+    jQuery.ajax({
+        type: 'POST',
+        url: ajaxurl,
+        dataType: 'json',
+        data: {
+            action: 'remove_order',
+        },
+        // success: function() {
+        //     ;
+        // }
+    })
 }
