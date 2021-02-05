@@ -57,10 +57,6 @@ add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
 
 function libanpost_wpo_wcpdf_before_order_data( $type, $order ){
 
-	if( $type != 'packing-slip' ) {
-		return;
-	}
-
 	$libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
 	$libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_send_project', true );
 	?>
@@ -82,3 +78,16 @@ function libanpost_wpo_wcpdf_before_order_data( $type, $order ){
 	<?php
 }
 add_action( 'wpo_wcpdf_before_order_data', 'libanpost_wpo_wcpdf_before_order_data', 10, 2 );
+
+
+function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
+
+	require_once 'vendor/autoload.php';
+	$libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
+
+	$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+	echo '<div class="barcode" style="margin-top:20px;">';
+	echo $generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128);
+	echo '</div>';
+}
+add_action( 'wpo_wcpdf_after_shop_address', 'libanpost_wpo_wcpdf_after_shop_address', 10, 2 );
