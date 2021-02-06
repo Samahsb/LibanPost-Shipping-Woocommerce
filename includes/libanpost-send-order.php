@@ -64,19 +64,19 @@ add_action( 'wp_ajax_libanpost_send_project', 'libanpost_send_project' );
 
 function libanpost_remove_order() {
 
-    $request_url = 'https://develop.dalicosmetics.com/wp-admin/admin.php?page=submit-libanpost-project';
+    $request_url = admin_url().'admin.php?page=submit-libanpost-project';
 
     // Request the session
     $response_json = wp_remote_post( $request_url, array(
         'body'	  => json_encode (),
-        'headers' => array(
-            'content-type' => 'application/json'
-        ),
+//        'headers' => array(
+////            'content-type' => 'application/json'
+//        ),
     ) );
-
-    if ( is_wp_error( $response_json ) ) {
-        wp_send_json('WordPress failed to connect with libanpost server');
-    }
+//
+//    if ( is_wp_error( $response_json ) ) {
+//        wp_send_json('WordPress failed to connect with libanpost server');
+//    }
 
     $response = json_decode( $response_json['body'], true );
     if( $response == 0 ) {

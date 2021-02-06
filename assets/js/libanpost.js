@@ -183,9 +183,6 @@ function removeOrder() {
         dataType: 'json',
         data: {
             action: 'remove_order',
-        },
-        // success: function() {
-        //     ;
-        // }
+        }
     })
 }
