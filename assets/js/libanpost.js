@@ -177,12 +177,14 @@ function libanPostAJAXRequest() {
 })(jQuery);
 
 function removeOrder() {
+    let deleteOrderNb = libanpost-remove-btn.value;
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         dataType: 'json',
         data: {
             action: 'remove_order',
+            orderData: deleteOrderNb,
         }
     })
 }

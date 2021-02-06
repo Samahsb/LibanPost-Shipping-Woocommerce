@@ -98,21 +98,21 @@ fieldset.libanpost-fieldset .libanpost-textarea textarea {
     display: flex;
     align-items: flex-end;
 }
-button.libanpost-remove-btn {
+.libanpost-remove-btn {
     border: 1px solid red;
     border-radius: 2px;
     background-color: white;
     color: red;
     cursor: pointer;
 }
-button.libanpost-remove-btn:hover {
+.libanpost-remove-btn:hover {
     opacity: 0.7;
 }
-button.libanpost-remove-btn:active, button.libanpost-remove-btn:focus {
+.libanpost-remove-btn:active, .libanpost-remove-btn:focus {
     outline: none;
 }
 @media only screen and (max-width: 768px) {
-    fieldset.libanpost-fieldset div {
+    fieldset.libanpost-fieldset div{
         width: 100%;
     }
 }
