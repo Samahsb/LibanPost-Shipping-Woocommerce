@@ -44,7 +44,7 @@ function submitLibanPostProject() {
             orderData: projectData,
         },
         beforeSend:function() {
-            projectLoader.style.display = "block";
+            libanpost_loader_submit_project.style.display = "block";
             document.getElementById("projectResponse").innerHTML = '';
         },
         success: function(data) {
@@ -56,7 +56,7 @@ function submitLibanPostProject() {
             document.getElementById("projectResponse").innerHTML = data.ErrorDescription;
         },
         complete: function() {
-            projectLoader.style.display = "none";
+            libanpost_loader_submit_project.style.display = "none";
         },
         error: function (jqXHR, exception) {
             let msg = '';
@@ -185,7 +185,11 @@ function removeOrder(orderID) {
             action: 'libanpost_project_remove_order',
             orderID: orderID,
         },
+        beforeSend:function() {
+            document.getElementById('libanpost_loader_remove_btn').style.display = "inline-block";
+        },
         success: function(response) {
+            document.getElementById('libanpost_loader_remove_btn').style.display = "none";
             let i;
             for(i=0; i<dataItems.length; i++) {
                 if(response.data == dataItems[i]['id']) {

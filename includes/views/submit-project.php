@@ -12,7 +12,7 @@
             <input type="button" value="Submit Project" onclick="submitLibanPostProject()" class="button-primary">
             <div class="libanpost-ajax-response">
                 <div id="projectResponse"></div>
-                <div class="libanpost-loader" id="projectLoader"></div>
+                <div class="libanpost-loader-submit-project" id="libanpost_loader_submit_project"></div>
             </div>
         </div>
     </form>
