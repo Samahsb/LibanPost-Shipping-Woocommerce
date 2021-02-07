@@ -20,7 +20,7 @@ class LibanPost_Project_Orders extends WP_List_Table {
 	    foreach ( $orders as $order ) {
 		    if (
 		    	! empty ( wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true ) )
-			    &&  empty ( wc_get_order_item_meta( $order->get_id(), 'libanpost_send_project', true ) )
+			    &&  empty ( wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true ) )
 		    ) {
 			    $row['id']           = $order->get_id();
 			    $row['name']         = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();

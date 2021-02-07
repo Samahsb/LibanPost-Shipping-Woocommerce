@@ -58,7 +58,7 @@ add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
 function libanpost_wpo_wcpdf_before_order_data( $type, $order ){
 
 	$libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
-	$libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_send_project', true );
+	$libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
 	?>
 
 	<?php if ( ! empty( $libanpost_number ) ) { ?>

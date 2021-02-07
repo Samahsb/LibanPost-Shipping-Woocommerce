@@ -54,7 +54,7 @@ function libanpost_send_project() {
     if( $response['ErrorCode'] == 0 ) {
 
     	foreach ( $data_items as $item ) {
-		    wc_update_order_item_meta( $item['id'], 'libanpost_send_project', $response['OrderNbr'] );
+		    wc_update_order_item_meta( $item['id'], 'libanpost_project_id', $response['OrderNbr'] );
 	    }
     }
 
