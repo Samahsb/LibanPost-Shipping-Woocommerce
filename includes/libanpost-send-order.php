@@ -21,7 +21,7 @@ function libanpost_send_order() {
 	$response = json_decode( $response_json['body'], true );
 
 	if( $response['ErrorCode'] == 0 ) {
-		wc_add_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_shipping_nb', $response['OrderNbr'] ) ;
+		wc_update_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_shipping_nb', $response['OrderNbr'] ) ;
         $order = new WC_Order($_POST['orderData']['PK_Order']['REFERENCE_ID']);
         $order->update_status( 'completed' );
 	}
@@ -54,7 +54,7 @@ function libanpost_send_project() {
     if( $response['ErrorCode'] == 0 ) {
 
     	foreach ( $data_items as $item ) {
-		    wc_add_order_item_meta( $item['id'], 'libanpost_send_project', $response['OrderNbr'] );
+		    wc_update_order_item_meta( $item['id'], 'libanpost_send_project', $response['OrderNbr'] );
 	    }
     }
 
@@ -62,25 +62,11 @@ function libanpost_send_project() {
 }
 add_action( 'wp_ajax_libanpost_send_project', 'libanpost_send_project' );
 
-function libanpost_remove_order() {
+function libanpost_project_remove_order() {
+    wp_send_json_success();
 
-    $request_url = admin_url().'admin.php?page=submit-libanpost-project';
-    $request_data = $_POST['orderData'];
-    // Request the session
-    $response_json = wp_remote_post( $request_url, array(
-        'body'	  => json_encode (),
-        'headers' => array(
-            'content-type' => 'application/json'
-        ),
-    ) );
-//
-//    if ( is_wp_error( $response_json ) ) {
-//        wp_send_json('WordPress failed to connect with libanpost server');
-//    }
+    $order_id = $_POST['orderID'];
+    wc_update_order_item_meta( $order_id, 'libanpost_shipping_nb', '');
 
-    $response = json_decode( $response_json['body'], true );
-    if( $response == 0 ) {
-         wc_add_order_item_meta( $_POST['orderData'], 'libanpost_send_project', '');
-    }
 }
-add_action( 'wp_ajax_remove_order', 'libanpost_remove_order' );
+add_action( 'wp_ajax_libanpost_project_remove_order', 'libanpost_project_remove_order' );

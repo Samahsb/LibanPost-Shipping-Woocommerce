@@ -176,15 +176,20 @@ function libanPostAJAXRequest() {
     });
 })(jQuery);
 
-function removeOrder() {
-    let deleteOrderNb = libanpost-remove-btn.value;
+function removeOrder(orderID) {
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
         dataType: 'json',
         data: {
-            action: 'remove_order',
-            orderData: deleteOrderNb,
-        }
+            action: 'libanpost_project_remove_order',
+            orderID: orderID,
+        },
+        success: function(data) {
+            //dataItems
+            //for dataItems
+            // 1- remove the item from dataItems
+            // 2- remove the row from the table -> hide order-orderID
+        },
     })
 }
