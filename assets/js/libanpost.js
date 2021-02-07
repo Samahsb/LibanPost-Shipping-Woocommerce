@@ -137,7 +137,7 @@ function libanPostAJAXRequest() {
         success: function(data) {
             if(data.ErrorCode == 0) {
                 response.style.color = "green";
-                libanpostOrderNumber.value = data.OrderNbr;
+                libanpostOrderNumber.value = "Order Nb: " + data.OrderNbr;
                 prepareShipmentBtn.disabled = true;
                 createShipmentBtn.disabled = true;
             } else {
