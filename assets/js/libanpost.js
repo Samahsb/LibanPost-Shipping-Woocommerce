@@ -185,11 +185,15 @@ function removeOrder(orderID) {
             action: 'libanpost_project_remove_order',
             orderID: orderID,
         },
-        success: function(data) {
-            //dataItems
-            //for dataItems
-            // 1- remove the item from dataItems
-            // 2- remove the row from the table -> hide order-orderID
+        success: function(response) {
+            let i;
+            for(i=0; i<dataItems.length; i++) {
+                if(response.data == dataItems[i]['id']) {
+                    dataItems.splice(i,i);
+                    dataItems.length = dataItems.length - 1;
+                    document.getElementById('order-'+response.data).style.display = 'none';
+                }
+            }
         },
     })
 }

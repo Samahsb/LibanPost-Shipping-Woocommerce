@@ -63,10 +63,10 @@ function libanpost_send_project() {
 add_action( 'wp_ajax_libanpost_send_project', 'libanpost_send_project' );
 
 function libanpost_project_remove_order() {
-    wp_send_json_success();
 
     $order_id = $_POST['orderID'];
     wc_update_order_item_meta( $order_id, 'libanpost_shipping_nb', '');
 
+    wp_send_json_success($order_id);
 }
 add_action( 'wp_ajax_libanpost_project_remove_order', 'libanpost_project_remove_order' );
