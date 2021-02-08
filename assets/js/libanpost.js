@@ -177,6 +177,7 @@ function libanPostAJAXRequest() {
 })(jQuery);
 
 function removeOrder(orderID) {
+    let i = 0;
     jQuery.ajax({
         type: 'POST',
         url: ajaxurl,
@@ -185,15 +186,19 @@ function removeOrder(orderID) {
             action: 'libanpost_project_remove_order',
             orderID: orderID,
         },
-        beforeSend:function() {
-            document.getElementById('libanpost_loader_remove_btn').style.display = "inline-block";
+        beforeSend:function(data) {
+            for(i=0;i<dataItems.length; i++) {
+                if(data.orderID == dataItems[i]['id']) {
+                    document.getElementById('libanpost_loader_remove_btn').style.display = "inline-block";
+                }
+            }
         },
         success: function(response) {
-            document.getElementById('libanpost_loader_remove_btn').style.display = "none";
-            let i;
             for(i=0; i<dataItems.length; i++) {
                 if(response.data == dataItems[i]['id']) {
-                    dataItems.splice(i,i);
+                    document.getElementById('libanpost_loader_remove_btn').style.display = "none";
+                    delete dataItems[i];
+                    dataItems[i] = dataItems[i+1];
                     dataItems.length = dataItems.length - 1;
                     document.getElementById('order-'+response.data).style.display = 'none';
                 }
