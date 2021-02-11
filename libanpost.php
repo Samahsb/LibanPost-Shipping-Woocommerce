@@ -75,6 +75,13 @@ function libanpost_wpo_wcpdf_before_order_data( $type, $order ){
 	</tr>
 	<?php } ?>
 
+    <?php if ( ! empty( $libanpost_sent ) ) { ?>
+        <tr class="order-libanpost-project">
+            <th>COD Amount:</th>
+            <td><?php echo $order->get_total(); echo ' '; echo $order->get_currency();?></td>
+        </tr>
+    <?php } ?>
+
 	<?php
 }
 add_action( 'wpo_wcpdf_before_order_data', 'libanpost_wpo_wcpdf_before_order_data', 10, 2 );
