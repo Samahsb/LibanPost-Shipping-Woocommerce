@@ -102,7 +102,7 @@ function libanPostAJAXRequest() {
             "REFERENCE_NO": referenceNb.value,
             "DEPOSITOR_FULLNAME": depositorName.value,
             "DEPOSITOR_ADDRESS": depositorAddress.value,
-            "DEPOSITOR_PHONENO": "",
+            "DEPOSITOR_PHONENO": phoneNb.value,
             "CLIENT_FULLNAME": billingFullName.value,
             "CLIENT_ADDRESS": document.getElementById("address").value,
             "CLIENT_PHONENO": phoneNb.value,

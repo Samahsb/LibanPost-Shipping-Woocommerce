@@ -10,6 +10,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $order_id = $order->get_id();
     $order_currency = $order->get_currency();
     $order_total = $order->get_total();
+    var_dump($order_total);
     $client_phonenb = $order->get_billing_phone();
     $total_quantity = $order->get_item_count();
     $billing_address1 =  $order->get_billing_address_1();
