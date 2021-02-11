@@ -95,7 +95,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div>
                         <label>AMOUNT</label>
-                        <input type="text" id="orderAmount" value=" <?php echo $order_total ?>">
+                        <input type="text" id="orderAmount" value="<?php echo $order_total ?>">
                     </div>
                 </fieldset>
             <div class="create-shipment">

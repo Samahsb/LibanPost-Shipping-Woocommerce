@@ -117,7 +117,7 @@ function libanPostAJAXRequest() {
         "Lst_PK_ORDER_DETAILS_CHARGES": [{
             "FEESID": 0,
             "CURRENCYCD": orderCurrency.value,
-            "AMOUNT": orderAmount.value,
+            "AMOUNT": parseInt(orderAmount.value),
             "PAYMENTMODEID": 1
         }]
     };
