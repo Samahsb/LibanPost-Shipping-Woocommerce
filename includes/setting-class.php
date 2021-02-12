@@ -32,18 +32,24 @@ class WC_Settings_Tab_LibanPost_API {
 				'desc' => '',
 				'id' => 'wc_settings_tab_api_section_title'
 			),
-			'title' => array(
-				'name' => __('Title', 'woocommerce-settings-tab-api'),
+			'name' => array(
+				'name' => __('Name', 'woocommerce-settings-tab-api'),
 				'type' => 'text',
-				'desc' => __('Title of your store', 'woocommerce-settings-tab-api'),
-				'id' => 'wc_settings_tab_api_title'
+				'desc' => __('Name of your store', 'woocommerce-settings-tab-api'),
+				'id' => 'wc_settings_tab_api_name'
 			),
-			'email' => array(
-				'name' => __('Email', 'woocommerce-settings-tab-api'),
-				'type' => 'email',
-				'desc' => __('Email address for your site.', 'woocommerce-settings-tab-api'),
-				'id' => 'wc_settings_tab_email'
+			'address' => array(
+				'name' => __('Address', 'woocommerce-settings-tab-api'),
+				'type' => 'text',
+				'desc' => __('Address of your store', 'woocommerce-settings-tab-api'),
+				'id' => 'wc_settings_tab_api_address'
 			),
+            'phoneNb' => array(
+                'name' => __('Phone Number', 'woocommerce-settings-tab-api'),
+                'type' => 'number',
+                'desc' => __('Store Phone Number.', 'woocommerce-settings-tab-api'),
+                'id' => 'wc_settings_tab_api_phone_nb'
+            ),
 			'token' => array(
 				'name' => __('Token', 'woocommerce-settings-tab-api'),
 				'type' => 'text',
