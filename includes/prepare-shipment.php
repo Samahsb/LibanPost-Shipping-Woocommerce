@@ -60,15 +60,15 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div>
                         <label>DEPOSITOR FULLNAME</label>
-                        <input type="text" id="depositorName" value= "<?php echo $billing_fname. ' ' .$billing_lname ?>">
+                        <input type="text" id="depositorName" value="<?php echo get_option("wc_settings_tab_api_name") ?>">
                     </div>
                     <div>
                         <label>DEPOSITOR ADDRESS</label>
-                        <input type="text" id="depositorAddress" value="Lebanon">
+                        <input type="text" id="depositorAddress" value="<?php echo get_option("wc_settings_tab_api_address") ?>">
                     </div>
                     <div>
                         <label>DEPOSITOR PHONE NO</label>
-                        <input type="text" value="<?php echo $client_phonenb ?>">
+                        <input type="text" value="<?php echo get_option("wc_settings_tab_api_phone_nb") ?>">
                     </div>
                     <div>
                         <label>CLIENT FULLNAME</label>
