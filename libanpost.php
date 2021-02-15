@@ -75,20 +75,6 @@ function libanpost_wpo_wcpdf_before_order_data( $type, $order ){
 	</tr>
 	<?php } ?>
 
-    <?php if ( ! empty( $libanpost_sent ) ) { ?>
-        <tr class="order-libanpost-project">
-            <th>COD Amount:</th>
-            <td><?php echo $order->get_total(); echo ' '; echo $order->get_currency();?></td>
-        </tr>
-    <?php } ?>
-
-    <?php if ( ! empty( $libanpost_sent ) ) { ?>
-        <tr class="order-libanpost-project">
-            <th>Client Phone Number:</th>
-            <td><?php echo $order->get_billing_phone();?></td>
-        </tr>
-    <?php } ?>
-
 	<?php
 }
 add_action( 'wpo_wcpdf_before_order_data', 'libanpost_wpo_wcpdf_before_order_data', 10, 2 );
@@ -119,3 +105,23 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
         <?php
 }
 add_action( 'wpo_wcpdf_after_shop_address', 'libanpost_wpo_wcpdf_after_shop_address', 10, 2 );
+
+function libanpost_wpo_wcpdf_after_document_label($type, $order) {
+    $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
+    ?>
+    <?php if ( ! empty( $libanpost_sent ) ) { ?>
+        <div>
+            COD Amount:
+            <?php echo $order->get_total(); echo ' '; echo $order->get_currency();?>
+        </div>
+    <?php } ?>
+
+    <?php if ( ! empty( $libanpost_sent ) ) { ?>
+        <div>
+            Client Phone Number:
+            <?php echo $order->get_billing_phone();?>
+        </div>
+    <?php
+    }
+}
+add_action( 'wpo_wcpdf_after_document_label', 'libanpost_wpo_wcpdf_after_document_label', 10, 2);
