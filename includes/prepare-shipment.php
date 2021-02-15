@@ -68,7 +68,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div>
                         <label>DEPOSITOR PHONE NO</label>
-                        <input type="text" value="<?php echo get_option("wc_settings_tab_api_phone_nb") ?>">
+                        <input type="text" id="depositorPhoneNb" value="<?php echo get_option("wc_settings_tab_api_phone_nb") ?>">
                     </div>
                     <div>
                         <label>CLIENT FULLNAME</label>
