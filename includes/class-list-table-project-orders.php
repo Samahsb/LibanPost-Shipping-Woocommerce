@@ -17,6 +17,24 @@ class LibanPost_Project_Orders extends WP_List_Table {
 		    'order'     => 'DESC',
 	    ));
 
+
+	    global $wpdb;
+	    $libanpost_orders = $wpdb->get_results(
+	        "
+	        SELECT order_item_id
+	        FROM yt48_dal_woocommerce_order_itemmeta
+	        WHERE meta_key = 'libanpost_shipping_nb' 
+	        AND meta_value != ''
+	        AND order_item_id NOT IN 
+	        (SELECT order_item_id
+	         FROM yt48_dal_woocommerce_order_itemmeta 
+	         WHERE meta_key = 'libanpost_project_id'
+	         AND meta_value != '')
+	        "
+        );
+	    var_dump($libanpost_orders);
+        die('h');
+
 	    foreach ( $orders as $order ) {
 		    if (
 		    	! empty ( wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true ) )
