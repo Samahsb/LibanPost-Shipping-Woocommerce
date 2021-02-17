@@ -176,7 +176,7 @@ function libanPostAJAXRequest() {
     });
 })(jQuery);
 
-function removeOrder(orderID) {
+function removeOrder(orderID, OrderNumber) {
     let i, j;
     jQuery.ajax({
         type: 'POST',
@@ -185,6 +185,7 @@ function removeOrder(orderID) {
         data: {
             action: 'libanpost_project_remove_order',
             orderID: orderID,
+            OrderNumber: OrderNumber
         },
         beforeSend:function() {
                     document.getElementById('libanpost_loader_remove_btn_'+orderID).style.display = "inline-block";

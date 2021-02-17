@@ -65,6 +65,21 @@ add_action( 'wp_ajax_libanpost_send_project', 'libanpost_send_project' );
 function libanpost_project_remove_order() {
 
     $order_id = $_POST['orderID'];
+
+// todo: check with Libanpost later on how to cancel order
+//	$libanpost_token =  get_option("wc_settings_tab_token");
+//	$libanpost_erpcode = get_option("wc_settings_tab_erpcode");
+//	$order_number = $_POST['OrderNumber'];
+//
+//	$request_url = "https://hemi.Libanpost.com/api/PKOrder?token=" . $libanpost_token . "&ERPCode=" . $libanpost_erpcode . "&OrderNumber=" . $order_number . "&OrderType=O";
+//	$response_json = wp_remote_post( $request_url );
+//
+//	if ( is_wp_error( $response_json ) ) {
+//		wp_send_json('WordPress failed to connect with libanpost server');
+//	}
+//
+//	$response = json_decode( $response_json['body'], true );
+
     wc_update_order_item_meta( $order_id, 'libanpost_shipping_nb', '');
 
     wp_send_json_success($order_id);

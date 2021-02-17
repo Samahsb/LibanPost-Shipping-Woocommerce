@@ -51,7 +51,7 @@ function libanpost_enqueuing_admin_scripts() {
     }
 
 	wp_enqueue_style( 'admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/css/libanpost.css', array(), '1.0.2' );
-	wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js', array(), '1.0.1' );
+	wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js', array(), '1.0.3' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
 

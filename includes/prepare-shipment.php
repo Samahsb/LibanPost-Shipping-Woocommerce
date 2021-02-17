@@ -17,8 +17,8 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $billing_city = $order->get_billing_city();
     $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
     $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
-    $mouhafaza = get_post_meta( $order->get_id(), 'mouhafaza', true );
-    $caza = get_post_meta( $order->get_id(), 'caza', true );
+    $mouhafaza = get_post_meta( $order->get_id(), 'billing_mouhafaza', true );
+    $caza = get_post_meta( $order->get_id(), 'billing_caza', true );
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">
@@ -56,7 +56,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div class="hidden">
                         <label>Depositor Address</label>
-                        <textarea rows="4" id="depositorAddress"><?php echo get_option("wc_settings_tab_api_address") ?></textarea>
+                        <textarea rows="2" id="depositorAddress"><?php echo get_option("wc_settings_tab_api_address") ?></textarea>
                     </div>
 
                     <div>
