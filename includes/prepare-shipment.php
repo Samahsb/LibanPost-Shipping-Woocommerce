@@ -19,6 +19,8 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $order_status  = $order->get_status();
     $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
     $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
+    $mouhafaza = wc_get_order_item_meta( $order->get_id(), 'mouhafaza', true );
+    var_dump($mouhafaza);
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">
@@ -81,6 +83,18 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     <div>
                         <label>Notes</label>
                         <input type="text" id="notes">
+                    </div>
+                    <div>
+                        <label>Mouhafaza</label>
+                        <input type="text" id="mouhafaza" value="<?php $mouhafaza ?>">
+                    </div>
+                    <div>
+                        <label>Caza</label>
+                        <input type="text" id="caza">
+                    </div>
+                    <div>
+                        <label>Area</label>
+                        <input type="text" id="area">
                     </div>
                     <div class="libanpost-textarea">
                         <label>CLIENT ADDRESS</label>
