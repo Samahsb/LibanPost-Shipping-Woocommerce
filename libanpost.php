@@ -2,7 +2,7 @@
 /**
  * Plugin Name: LibanPost Shipping Woocommerce
  * Description: This is a plugin for the API integration between WooCommerce and LibanPost
- * Version: 1.0
+ * Version: 1.1
  * Author: Samah Basheer | Ali Basheer
  **/
 
