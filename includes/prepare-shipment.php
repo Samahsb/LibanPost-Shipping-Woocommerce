@@ -15,8 +15,6 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $billing_address1 =  $order->get_billing_address_1();
     $billing_address2 =  $order->get_billing_address_2();
     $billing_city = $order->get_billing_city();
-    $order_date = $order->order_date;
-    $order_status  = $order->get_status();
     $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
     $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
     $mouhafaza = get_post_meta( $order->get_id(), 'mouhafaza', true );
