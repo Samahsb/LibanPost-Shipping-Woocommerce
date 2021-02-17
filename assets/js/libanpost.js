@@ -99,7 +99,7 @@ function libanPostAJAXRequest() {
             "NOTIFICATIONTYPECD": "NL"
         },
         "Lst_PK_ORDER_DETAILS": [{
-            "REFERENCE_NO": referenceNb.value,
+            "REFERENCE_NO": referenceID.value,
             "DEPOSITOR_FULLNAME": depositorName.value,
             "DEPOSITOR_ADDRESS": depositorAddress.value,
             "DEPOSITOR_PHONENO": depositorPhoneNb.value,

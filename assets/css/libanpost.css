@@ -73,33 +73,39 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
-fieldset.libanpost-fieldset div {
+.libanpost-fieldset div {
     display: inline-block;
     width: 49%;
     margin: 9px 2px;
     box-sizing: border-box;
     padding: 0 15px;
 }
-fieldset.libanpost-fieldset input {
-    float: right;
+.libanpost-fieldset .hidden {
+    display: none;
+}
+.libanpost-fieldset input,
+.libanpost-fieldset textarea {
     width: 100%;
     border-radius: 0;
     margin-top: 5px;
 }
-fieldset.libanpost-fieldset legend {
+.libanpost-fieldset legend {
     font-weight: bold;
     font-size: 15px;
 }
-fieldset.libanpost-fieldset .libanpost-textarea {
+.libanpost-fieldset .libanpost-textarea {
     width: 100%;
 }
-fieldset.libanpost-fieldset .libanpost-textarea textarea {
+.libanpost-fieldset .libanpost-textarea textarea {
     width: 100%;
     margin-top: 5px;
 }
 .submit-project {
     display: flex;
     align-items: flex-end;
+}
+.libanpost-fieldset .full-width {
+    width: 100%;
 }
 .libanpost-remove-btn {
     border: 1px solid red;
