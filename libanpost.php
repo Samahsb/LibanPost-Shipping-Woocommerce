@@ -84,7 +84,8 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
 
         require_once 'vendor/autoload.php';
         $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
-        $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+//        $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+    $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
         ?>
 
         <style>
@@ -95,7 +96,8 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
         <div class="barcode-image" style="margin-top:40px;">
             <?php
             if($libanpost_number != '') {
-                echo $generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128);
+//                echo $generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128);
+                echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128)) . '">';
             }
             ?>
         </div>
