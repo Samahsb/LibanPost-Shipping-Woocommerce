@@ -93,7 +93,7 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
                 margin: 0 auto;
             }
         </style>
-        <div class="barcode-image" style="margin-top:40px;">
+        <div class="barcode-image" style="margin-top:40px; text-align: center;">
             <?php
             if($libanpost_number != '') {
 //                echo $generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128);
