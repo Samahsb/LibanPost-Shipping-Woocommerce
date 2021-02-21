@@ -24,6 +24,8 @@ function libanpost_send_order() {
 		wc_update_order_item_meta( $_POST['orderData']['PK_Order']['REFERENCE_ID'], 'libanpost_shipping_nb', $response['OrderNbr'] ) ;
         $order = new WC_Order($_POST['orderData']['PK_Order']['REFERENCE_ID']);
         $order->update_status( 'completed' );
+        $note = __("Order is prepared and its LibanPost Number is " . $response['OrderNbr']);
+        $order->add_order_note( $note );
 	}
 
 	wp_send_json($response);
@@ -55,6 +57,8 @@ function libanpost_send_project() {
 
     	foreach ( $data_items as $item ) {
 		    wc_update_order_item_meta( $item['id'], 'libanpost_project_id', $response['OrderNbr'] );
+            $note = __("Order sent to LibanPost with project ID is " . $response['OrderNbr']);
+            $item['id']->add_order_note( $note );
 	    }
     }
 
