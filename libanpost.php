@@ -29,6 +29,7 @@ include_once dirname( __FILE__ ) . '/includes/prepare-shipment.php';
 include_once dirname( __FILE__ ) . '/includes/libanpost-send-order.php';
 include_once dirname( __FILE__ ) . '/includes/libanpost-bulk-projects.php';
 include_once dirname( __FILE__ ) . '/includes/class-list-table-project-orders.php';
+include_once dirname( __FILE__ ) . '/includes/class-list-table-project-list.php';
 
 /**
  * Adds plugin page configure link
