@@ -99,7 +99,7 @@ function libanPostAJAXRequest() {
             "NOTIFICATIONTYPECD": "NL"
         },
         "Lst_PK_ORDER_DETAILS": [{
-            "REFERENCE_NO": referenceNb.value,
+            "REFERENCE_NO": referenceID.value,
             "DEPOSITOR_FULLNAME": depositorName.value,
             "DEPOSITOR_ADDRESS": depositorAddress.value,
             "DEPOSITOR_PHONENO": depositorPhoneNb.value,
@@ -176,7 +176,7 @@ function libanPostAJAXRequest() {
     });
 })(jQuery);
 
-function removeOrder(orderID) {
+function removeOrder(orderID, OrderNumber) {
     let i, j;
     jQuery.ajax({
         type: 'POST',
@@ -185,6 +185,7 @@ function removeOrder(orderID) {
         data: {
             action: 'libanpost_project_remove_order',
             orderID: orderID,
+            OrderNumber: OrderNumber
         },
         beforeSend:function() {
                     document.getElementById('libanpost_loader_remove_btn_'+orderID).style.display = "inline-block";

@@ -15,10 +15,10 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $billing_address1 =  $order->get_billing_address_1();
     $billing_address2 =  $order->get_billing_address_2();
     $billing_city = $order->get_billing_city();
-    $order_date = $order->order_date;
-    $order_status  = $order->get_status();
     $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
     $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
+    $mouhafaza = get_post_meta( $order->get_id(), 'billing_mouhafaza', true );
+    $caza = get_post_meta( $order->get_id(), 'billing_caza', true );
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">
@@ -30,72 +30,61 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
 		<div class="libanpost-shipment-creation">
 			<span class="dashicons dashicons-no-alt" onclick="hideShipmentDetails()"></span>
                 <fieldset class="libanpost-fieldset">
-                    <legend>PK Order</legend>
-                    <div>
-                        <label>PERSON FID</label>
+                    <legend>Pick Up Order</legend>
+                    <div class="hidden">
+                        <label>Person FID</label>
                         <input type="text" id="personFID" value="<?php echo get_option("wc_settings_tab_erpcode") ?>">
                     </div>
                     <div>
-                        <label>REFERENCE ID</label>
-                        <input type="text" id="referenceID" value="<?php echo $order_id ?>">
+                        <label>Reference ID (Order ID)</label>
+                        <input type="text" id="referenceID" disabled value="<?php echo $order_id ?>">
                     </div>
                     <div>
-                        <label>ESTIMATED NO OF ITEMS</label>
-                        <input type="text" id="nbOfItems" value="<?php echo $total_quantity ?>">
-                    </div>
-                    <div>
-                        <label>ENTRY DATE</label>
-                        <input type="text" value="<?php echo $order_date ?>">
-                    </div>
-                    <div>
-                        <label>ORDER DATE</label>
-                        <input type="text" value="<?php echo $order_date ?>">
+                        <label>Number of Items</label>
+                        <input type="text" id="nbOfItems" disabled value="<?php echo $total_quantity ?>">
                     </div>
                 </fieldset>
                 <fieldset class="libanpost-fieldset">
-                    <legend>PK Order Details</legend>
-                    <div>
-                        <label>REFERENCE NO</label>
-                        <input type="text" id="referenceNb" value= "<?php echo $order_id ?>">
-                    </div>
-                    <div>
-                        <label>DEPOSITOR FULLNAME</label>
+                    <legend>Pick Up Order Details</legend>
+                    <div class="hidden">
+                        <label>Depositor Fullname</label>
                         <input type="text" id="depositorName" value="<?php echo get_option("wc_settings_tab_api_name") ?>">
                     </div>
-                    <div>
-                        <label>DEPOSITOR ADDRESS</label>
-                        <input type="text" id="depositorAddress" value="<?php echo get_option("wc_settings_tab_api_address") ?>">
-                    </div>
-                    <div>
-                        <label>DEPOSITOR PHONE NO</label>
+                    <div class="hidden">
+                        <label>Depositor Phone number</label>
                         <input type="text" id="depositorPhoneNb" value="<?php echo get_option("wc_settings_tab_api_phone_nb") ?>">
                     </div>
+                    <div class="hidden">
+                        <label>Depositor Address</label>
+                        <textarea rows="2" id="depositorAddress"><?php echo get_option("wc_settings_tab_api_address") ?></textarea>
+                    </div>
+
                     <div>
-                        <label>CLIENT FULLNAME</label>
+                        <label>Client Full Name</label>
                         <input type="text" id="billingFullName" value= "<?php echo $billing_fname. ' ' .$billing_lname ?>" >
                     </div>
                     <div>
-                        <label>CLIENT PHONENO</label>
+                        <label>Client Phone Number</label>
                         <input type="text" id="phoneNb" value="<?php echo $client_phonenb ?>">
                     </div>
-                    <div>
+                    <div class="full-width">
+                        <label>Client Address</label>
+                        <textarea rows="4" id="address"><?php echo $mouhafaza . ' - ' . $caza . ' - ' . $billing_city . ' - ' . $billing_address1 . ' - ' . $billing_address2;?></textarea>
+                    </div>
+                    <div class="full-width">
                         <label>Notes</label>
                         <input type="text" id="notes">
                     </div>
-                    <div class="libanpost-textarea">
-                        <label>CLIENT ADDRESS</label>
-                        <textarea rows="2" id="address"><?php echo $billing_city. ' ' . $billing_address1. ' ' .$billing_address2 ?></textarea>
-                    </div>
                 </fieldset>
                 <fieldset class="libanpost-fieldset">
-                    <legend>PK Order Details Charges</legend>
+                    <legend>Pick Up Order Charges</legend>
                     <div>
-                        <label>CURRENCY CD</label>
-                        <input type="text" id="orderCurrency" value= "<?php echo $order_currency ?>">
+                        <label>Amount</label>
+                        <input type="text" id="orderAmount" value="<?php echo $order_total ?>">
                     </div>
                     <div>
-                        <label>AMOUNT</label>
-                        <input type="text" id="orderAmount" value="<?php echo $order_total ?>">
+                        <label>Currency</label>
+                        <input type="text" id="orderCurrency" disabled value="<?php echo $order_currency ?>">
                     </div>
                 </fieldset>
             <div class="create-shipment">

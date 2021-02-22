@@ -2,7 +2,7 @@
 /**
  * Plugin Name: LibanPost Shipping Woocommerce
  * Description: This is a plugin for the API integration between WooCommerce and LibanPost
- * Version: 1.0
+ * Version: 1.1
  * Author: Samah Basheer | Ali Basheer
  **/
 
@@ -50,8 +50,8 @@ function libanpost_enqueuing_admin_scripts() {
         return;
     }
 
-	wp_enqueue_style( 'admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/css/libanpost.css' );
-	wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js',array(),'1.0.0');
+	wp_enqueue_style( 'admin-your-css-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/css/libanpost.css', array(), '1.0.2' );
+	wp_enqueue_script( 'admin-your-js-file-handle-name', plugin_dir_url( __FILE__ ) . '/assets/js/libanpost.js', array(), '1.0.3' );
 }
 add_action( 'admin_enqueue_scripts', 'libanpost_enqueuing_admin_scripts' );
 
@@ -84,7 +84,7 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
 
         require_once 'vendor/autoload.php';
         $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
-        $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
+        $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
         ?>
 
         <style>
@@ -92,10 +92,10 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
                 margin: 0 auto;
             }
         </style>
-        <div class="barcode-image" style="margin-top:40px;">
+        <div class="barcode-image" style="margin-top:40px; text-align: center;">
             <?php
             if($libanpost_number != '') {
-                echo $generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128);
+                echo '<img src="data:image/png;base64,' . base64_encode($generator->getBarcode($libanpost_number, $generator::TYPE_CODE_128)) . '">';
             }
             ?>
         </div>
@@ -105,23 +105,3 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
         <?php
 }
 add_action( 'wpo_wcpdf_after_shop_address', 'libanpost_wpo_wcpdf_after_shop_address', 10, 2 );
-
-function libanpost_wpo_wcpdf_after_document_label($type, $order) {
-    $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
-    ?>
-    <?php if ( ! empty( $libanpost_sent ) ) { ?>
-        <div>
-            COD Amount:
-            <?php echo $order->get_total(); echo ' '; echo $order->get_currency();?>
-        </div>
-    <?php } ?>
-
-    <?php if ( ! empty( $libanpost_sent ) ) { ?>
-        <div>
-            Client Phone Number:
-            <?php echo $order->get_billing_phone();?>
-        </div>
-    <?php
-    }
-}
-add_action( 'wpo_wcpdf_after_document_label', 'libanpost_wpo_wcpdf_after_document_label', 10, 2);
