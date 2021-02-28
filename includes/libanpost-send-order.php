@@ -26,7 +26,7 @@ function libanpost_send_order() {
         $order->update_status( 'completed' );
         $note = __("Order is prepared and its LibanPost Number is " . $response['OrderNbr']);
         $order->add_order_note( $note );
-    }
+	}
 
     wp_send_json($response);
 }
