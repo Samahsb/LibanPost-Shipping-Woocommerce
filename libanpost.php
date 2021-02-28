@@ -107,27 +107,37 @@ function libanpost_wpo_wcpdf_after_shop_address( $type, $order ){
 }
 add_action( 'wpo_wcpdf_after_shop_address', 'libanpost_wpo_wcpdf_after_shop_address', 10, 2 );
 
-//Search Woocommerce Orders
-//function libanpost_woocommerce_shop_order_search_fields($search_fields) {
-//
-//    $search_fields[] = $orders;
-//    return $search_fields;
-//}
-//add_filter( 'woocommerce_shop_order_search_fields', 'libanpost_woocommerce_shop_order_search_fields');
+function me_search_query( $query ) {
 
-//function libanpost_woocommerce_shop_order_search_fields( $search_fields ) {
-//    global $wpdb;
-//    $order = $wpdb->get_results("SELECT order_item_id
-//	        FROM {$wpdb->prefix}woocommerce_order_itemmeta
-//	        WHERE meta_key = 'libanpost_shipping_nb'");
-//    $search_fields[] = '_order_key';
-//    return $search_fields;
-//}
-//add_filter( 'woocommerce_shop_order_search_fields', 'libanpost_woocommerce_shop_order_search_fields' );
+	if ( $query->is_search && ! empty( $_GET['admin_filter_libanpost_nb'] ) ) {
 
-add_filter( 'woocommerce_shop_order_search_fields', 'shop_order_meta_search_fields', 10, 1 );
-function shop_order_meta_search_fields( $meta_keys ){
-    $filter_id = 'filter_shop_order_by_meta';
-    $meta_keys[]   = $_GET[$filter_id];
-    return $meta_keys;
+		global $wpdb;
+		$libanpost_id = $_GET['admin_filter_libanpost_nb'];
+
+		$sql = $wpdb->prepare( "SELECT order_item_id FROM {$wpdb->prefix}woocommerce_order_itemmeta WHERE meta_key = 'libanpost_shipping_nb' AND meta_value = '%s'", $libanpost_id );
+		$orders = $wpdb->get_results( $sql );
+
+		$orders_ids = array();
+
+		foreach ( $orders as $order ) {
+			$orders_ids[] = (int)$order->order_item_id;
+        }
+
+		$query->set('post__in', $orders_ids);
+	};
 }
+add_filter( 'pre_get_posts', 'me_search_query');
+
+function libanpost_filter_restrict_manage_posts(){
+
+	global $wpdb, $table_prefix;
+
+	$post_type = (isset($_GET['post_type'])) ? $_GET['post_type'] : 'post';
+
+	if ( $post_type == 'shop_order' ) {
+	    ?>
+        <input type="text" id="admin-filter-libanpost-nb" name="admin_filter_libanpost_nb" value="<?php echo isset($_GET['admin_filter_libanpost_nb'])? $_GET['admin_filter_libanpost_nb'] : ''?>" placeholder="Libanpost Number">
+		<?php
+	}
+}
+add_action( 'restrict_manage_posts', 'libanpost_filter_restrict_manage_posts');
