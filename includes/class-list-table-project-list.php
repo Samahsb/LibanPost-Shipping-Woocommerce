@@ -17,7 +17,7 @@ class LibanPost_Projects_List extends WP_List_Table {
 	         FROM {$wpdb->prefix}woocommerce_order_itemmeta
 	         WHERE meta_key = 'libanpost_project_id"
         );
-var_dump($numberOfOrders);
+
         foreach ( $orders as $order ) {
             $order = wc_get_order( $order->order_item_id );
             {
