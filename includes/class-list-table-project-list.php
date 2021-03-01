@@ -6,23 +6,16 @@ class LibanPost_Projects_List extends WP_List_Table {
 
         global $wpdb;
         $orders = $wpdb->get_results(
-            "SELECT DISTINCT order_item_id
+            "SELECT DISTINCT meta_value, COUNT(*) AS nb
 	         FROM {$wpdb->prefix}woocommerce_order_itemmeta
 	         WHERE meta_key = 'libanpost_project_id'
+	            GROUP BY meta_value
 	        "
         );
-
-        $numberOfOrders = $wpdb->get_results(
-            "SELECT COUNT(*), order_item_id
-	         FROM {$wpdb->prefix}woocommerce_order_itemmeta
-	         WHERE meta_key = 'libanpost_project_id"
-        );
-
         foreach ( $orders as $order ) {
-            $order = wc_get_order( $order->order_item_id );
             {
-                $row['id']           = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
-                $row['number']         = 5;
+                $row['id']           = $order->meta_value;
+                $row['orders']       = $order->nb;
                 $row['date']        = 6;
 
                 $data[] = $row;
@@ -48,7 +41,7 @@ class LibanPost_Projects_List extends WP_List_Table {
     public function get_columns() {
         $columns = array(
             "id" => "Project ID",
-            "number" => "Number of submitted orders",
+            "orders" => "Number Of Submitted Orders",
             "date" => "Date"
         );
         return $columns;
