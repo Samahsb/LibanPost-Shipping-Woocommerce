@@ -16,7 +16,6 @@ class LibanPost_Projects_List extends WP_List_Table {
             {
                 $row['id']           = $order->meta_value;
                 $row['orders']       = $order->nb;
-                $row['date']        = 6;
 
                 $data[] = $row;
             }
@@ -42,7 +41,6 @@ class LibanPost_Projects_List extends WP_List_Table {
         $columns = array(
             "id" => "Project ID",
             "orders" => "Number Of Submitted Orders",
-            "date" => "Date"
         );
         return $columns;
     }
