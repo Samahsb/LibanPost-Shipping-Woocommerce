@@ -19,6 +19,18 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
     $mouhafaza = get_post_meta( $order->get_id(), 'billing_mouhafaza', true );
     $caza = get_post_meta( $order->get_id(), 'billing_caza', true );
+    $country = $order->get_billing_country();
+    $total_weight = 0;
+    foreach( $order->get_items() as $item_id => $product_item ){
+        $quantity = $product_item->get_quantity();
+        $product = $product_item->get_product();
+        $product_weight = $product->get_weight();
+        if($product_weight == NULL) $product_weight = 0;
+        $total_weight += floatval( $product_weight * $quantity );
+    }
+    if($total_weight == NULL) {
+        $total_weight = 2;
+    }
     ?>
     <form action="#" method="POST">
     <div class="libanpost-main">
@@ -43,6 +55,10 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                         <label>Number of Items</label>
                         <input type="text" id="nbOfItems" disabled value="<?php echo $total_quantity ?>">
                     </div>
+                    <div>
+                        <label>Estimated Order Weight</label>
+                        <input type="text" id="weight" value="<?php echo $total_weight ?>">
+                    </div>
                 </fieldset>
                 <fieldset class="libanpost-fieldset">
                     <legend>Pick Up Order Details</legend>
@@ -66,6 +82,10 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     <div>
                         <label>Client Phone Number</label>
                         <input type="text" id="phoneNb" value="<?php echo $client_phonenb ?>">
+                    </div>
+                    <div>
+                        <label>Shipping Country</label>
+                        <input type="text" id="country" value="<?php echo $country ?>">
                     </div>
                     <div class="full-width">
                         <label>Client Address</label>

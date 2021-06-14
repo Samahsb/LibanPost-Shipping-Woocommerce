@@ -6,6 +6,12 @@ function hideShipmentDetails() {
 }
 let d = new Date();
 let ms = d.getTime();
+let orderTypeId = country.value;
+if(orderTypeId == 'LB') {
+    orderTypeId = 1;
+} else {
+    orderTypeId = 20;
+}
 function submitLibanPostProject() {
 
     let clsItems = [];
@@ -19,7 +25,7 @@ function submitLibanPostProject() {
         "Cls_PKOrder": {
             "PERSON_FID": erpCode.value,
             "ORDER_SPEED_ID": 1,
-            "ORDER_TYPE_ID": 1,
+            "ORDER_TYPE_ID": orderTypeId,
             "ORDER_ENTITY_ID": 6,
             "REFERENCE_ID": "Order reference ID",
             "ESTIMATED_NOOFITEMS": 1,
@@ -85,7 +91,7 @@ function libanPostAJAXRequest() {
         "PK_Order": {
             "PERSON_FID": personFID.value,
             "ORDER_SPEED_ID": 1,
-            "ORDER_TYPE_ID": 1,
+            "ORDER_TYPE_ID": orderTypeId,
             "ORDER_ENTITY_ID": 6,
             "REFERENCE_ID": referenceID.value,
             "ESTIMATED_NOOFITEMS": nbOfItems.value,
@@ -106,13 +112,14 @@ function libanPostAJAXRequest() {
             "CLIENT_FULLNAME": billingFullName.value,
             "CLIENT_ADDRESS": document.getElementById("address").value,
             "CLIENT_PHONENO": phoneNb.value,
-            "ESTIMATED_WEIGHT": 1,
+            "ESTIMATED_WEIGHT": document.getElementById("weight").value,
             "VEHICLE_TYPE_ID": 1,
             "PREF_VISIT_DATE_FROM": "\/Date("+ ms +")\/",
             "PREF_VISIT_DATE_TO": "\/Date("+ ms +")\/",
             "EVTGMTDT": "\/Date("+ ms +")\/",
             "ITEM_DESC": " ",
-            "Notes": notes.value
+            "Notes": notes.value,
+            "PXZONEID": country.value
         }],
         "Lst_PK_ORDER_DETAILS_CHARGES": [{
             "FEESID": 0,
