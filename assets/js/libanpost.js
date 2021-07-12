@@ -6,7 +6,7 @@ function hideShipmentDetails() {
 }
 let d = new Date();
 let ms = d.getTime();
-let orderTypeId = country.value;
+let orderTypeId = jQuery('#country').val();
 if(orderTypeId == 'LB') {
     orderTypeId = 1;
 } else {
