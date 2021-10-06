@@ -18,7 +18,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
     $libanpost_number = wc_get_order_item_meta( $order->get_id(), 'libanpost_shipping_nb', true );
     $libanpost_sent = wc_get_order_item_meta( $order->get_id(), 'libanpost_project_id', true );
     $mouhafaza = get_post_meta( $order->get_id(), 'billing_mouhafaza', true );
-    $caza = get_post_meta( $order->get_id(), 'billing_caza', true );
+//    $caza = get_post_meta( $order->get_id(), 'billing_caza', true );
     $country = $order->get_billing_country();
     $total_weight = 0;
     foreach( $order->get_items() as $item_id => $product_item ){
@@ -89,7 +89,7 @@ function libanpost_woocommerce_admin_order_data_after_order_details( $wccm_befor
                     </div>
                     <div class="full-width">
                         <label>Client Address</label>
-                        <textarea rows="4" id="address"><?php echo $mouhafaza . ' - ' . $caza . ' - ' . $billing_city . ' - ' . $billing_address1 . ' - ' . $billing_address2;?></textarea>
+                        <textarea rows="4" id="address"><?php echo $mouhafaza . ' - ' . $billing_city . ' - ' . $billing_address1 . ' - ' . $billing_address2;?></textarea>
                     </div>
                     <div class="full-width">
                         <label>Notes</label>
